@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.utils.translation import gettext as _
+
 
 class FeedbackModel(models.Model):
     title = models.CharField(max_length=200)
@@ -22,5 +24,5 @@ class FeedbackModel(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'Feedbacks'
-        verbose_name = 'Feedback'
+        verbose_name_plural = _('Feedbacks')
+        verbose_name = _('Feedback')
