@@ -12,3 +12,7 @@ def landingPageView(request):
 
 def commentsView(request):
     return render(request, 'comments/comment.html')
+
+
+def offerFormView(request):
+    return render(request, 'forms/offer/offer-form.html')
