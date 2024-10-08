@@ -92,6 +92,9 @@ LANGUAGES = (
     ('en', 'English'),
     ('uz', 'Uzbek'),
 )
+LOCALE_PATHS = (
+    BASE_DIR / 'locale',
+)
 
 TIME_ZONE = 'UTC'
 
