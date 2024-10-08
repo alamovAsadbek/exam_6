@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,24 +7,24 @@
     <title>Najot Ta'lim | Offer Form</title>
 
     <!-- Stylesheets   -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link href="../../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
 
-    <link href="../../../css/bootstrap/bootstrap-icons.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap-icons.css' %}" rel="stylesheet">
 
-    <link href="../../../css/bootstrap/templatemo-ebook-landing.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/templatemo-ebook-landing.css' %}" rel="stylesheet">
 
-    <link rel="icon" href="../../../files/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{% static 'files/images/favicon.ico' %}" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../../css/forms/offer/style.css">
+    <link rel="stylesheet" href="{% static 'css/forms/offer/style.css' %}">
 
-    <link href="../../../css/bootstrap/templatemo-ebook-landing.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/templatemo-ebook-landing.css' %}" rel="stylesheet">
 
 </head>
 <body>
@@ -74,7 +75,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="../../../js/forms/offer/script.js"></script>
+<script src="{% static 'js/forms/offer/script.js' %}"></script>
 
 <!-- Animations -->
 <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
