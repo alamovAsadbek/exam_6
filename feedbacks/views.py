@@ -16,3 +16,11 @@ def commentsView(request):
 
 def offerFormView(request):
     return render(request, 'forms/offer/offer-form.html')
+
+
+def loginView(request):
+    return render(request, 'auth/login/login.html')
+
+
+def registerView(request):
+    return render(request, 'auth/register/register.html')
