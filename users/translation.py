@@ -5,4 +5,4 @@ from .models import UserModel
 
 @register(UserModel)
 class FeedbackModelTranslationOptions(TranslationOptions):
-    fields = ('full_name')
+    fields = ('full_name',)
