@@ -24,3 +24,7 @@ def loginView(request):
 
 def registerView(request):
     return render(request, 'auth/register/register.html')
+
+
+def profileView(request):
+    return render(request, 'profile/profile.html')
