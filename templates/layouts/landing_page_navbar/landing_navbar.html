@@ -1,13 +1,13 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="/">
-            <i><img src="./files/images/logo.png" alt="404" style="width: 60px;"></i>
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <i><img src="{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
             <span>Najot Ta'lim</span>
         </a>
 
         <div class="d-lg-none ms-auto me-3">
-            <a href="main/auth/login/login.html" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
+            <a href="{% url 'login' %}" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                 <i class="btn-icon bi-person"></i>
                 <span>Log in</span>
             </a>
