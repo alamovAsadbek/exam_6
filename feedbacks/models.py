@@ -15,10 +15,10 @@ class FeedbackModel(models.Model):
         ('offer', 'Offer'),
         ('problem', 'Problem')
     )
-    feedback_type = models.CharField(max_length=20, choices=choices)
+    feedback_type = models.CharField(max_length=20, choices=choices, verbose_name=_('Feedback Type'))
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created at'))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated at'))
 
     def __str__(self):
         return self.title
