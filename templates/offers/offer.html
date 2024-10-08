@@ -24,69 +24,7 @@
 <body>
 <!--navbar-->
 
-<nav class="navbar navbar-expand-lg">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'feedbacks' %}">
-            <i><img src="{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
-            <span>Najot Ta'lim</span>
-        </a>
 
-        <div class="d-lg-none ms-auto me-3">
-            <a href="{% url 'login' %}" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
-                <i class="btn-icon bi-person"></i>
-                <span>Log in</span>
-            </a>
-        </div>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-lg-auto me-lg-4">
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_1">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="{% url 'create_feedback' %}">Write an offer</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="{% url 'home' %}">Landing page</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="../comments/comment.html">Comments</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#">404</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="{% url 'profile' %}">Profile</a>
-                </li>
-
-                <li class="nav-item">
-                    <select class="form-select language-select" aria-label="Select language">
-                        <option value="en" selected>
-                            English
-                        </option>
-                        <option value="uz">
-                            Uzbek
-                        </option>
-                        <option value="ru">
-                            Rus
-                        </option>
-                    </select>
-
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 
 <!-- / navbar-->
 
