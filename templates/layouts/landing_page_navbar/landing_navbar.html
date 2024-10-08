@@ -1,3 +1,4 @@
+{% load my_tags %}
 {% load static %}
 {% load i18n %}
 <nav class="navbar navbar-expand-lg">
@@ -46,7 +47,9 @@
                         {% for language in languages %}
                             {% if language.code != LANGUAGE_CODE %}
                                 <option value="{{ language.code }}">
-                                    {{ language.name_local }}
+                                    <a href="{% get_full_url request language.0 %}" style="width: 100%;">
+                                        {{ language.name_local }}
+                                    </a>
                                 </option>
                             {% else %}
                                 <option value="{{ language.code }}" disabled selected>
