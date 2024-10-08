@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,24 +12,24 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
 
-    <link href="../../css/bootstrap/bootstrap-icons.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap-icons.css' %}" rel="stylesheet">
 
-    <link href="../../css/bootstrap/templatemo-ebook-landing.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/templatemo-ebook-landing.css' %}" rel="stylesheet">
 
-    <link rel="icon" href="../../files/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{% static 'files/images/favicon.ico' %}" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../css/carusel/carusel.css">
+    <link rel="stylesheet" href="{% static 'css/carusel/carusel.css' %}">
 
-    <link rel="stylesheet" href="../../css/profile/style.css">
+    <link rel="stylesheet" href="{% static 'css/profile/style.css' %}">
 </head>
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand" href="../../index.html">
-            <i><img src="../../files/images/logo.png" alt="404" style="width: 60px;"></i>
+            <i><img src="{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
             <span>Najot Ta'lim</span>
         </a>
 
