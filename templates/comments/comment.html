@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
@@ -6,20 +7,21 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Najot Ta'lim | Comment</title>
-    <link rel="stylesheet" href="../../css/comments/style-scss.css">
-    <link rel="icon" href="../../files/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/comments/style-scss.css' %}">
+    <link rel="icon" href="{% static 'files/images/favicon.ico' %}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
 
-    <link href="../../css/bootstrap/bootstrap-icons.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap-icons.css' %}" rel="stylesheet">
 
-    <link href="../../css/bootstrap/templatemo-ebook-landing.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/templatemo-ebook-landing.css' %}" rel="stylesheet">
 
-    <link rel="icon" href="../../files/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/carusel/carusel.css">
+    <link rel="icon" href="{% static 'files/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/carusel/carusel.css' %}">
+
     <!--    js file import-->
-    <script src="../../js/comments/comment-manage.js" defer></script>
+    <script src="{% static 'js/comments/comment-manage.js' %}" defer></script>
 </head>
 <body>
 <div class="app">
@@ -33,7 +35,7 @@
             </a>
         </div>
         <div class="user-settings">
-            <img class="user-profile" src="../../files/images/participants_images/alamov_asadbek.jpg"
+            <img class="user-profile" src="{% static 'files/images/participants_images/alamov_asadbek.jpg' %}"
                  alt="404" class="account-profile" alt="404">
         </div>
     </div>
@@ -199,7 +201,8 @@
                              Follow on LinkedIn
                             </span>
                         <span class="developer">
-                     <img src="../../files/images/participants_images/alamov_asadbek.jpg" alt="404avatar"/>
+                     <img src="../../{% static 'files/images/participants_images/alamov_asadbek.jpg' %}"
+                          alt="404avatar"/>
                      A'lamov Asadbek - @alamov_asadbek
                     </span>
                     </a>
@@ -231,10 +234,10 @@
 </div>
 
 <!--JAVASCRIPT FILES-->
-<script src="../../js/bootstrap/jquery.min.js"></script>
-<script src="../../js/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../js/bootstrap/jquery.sticky.js"></script>
-<script src="../../js/bootstrap/click-scroll.js"></script>
-<script src="../../js/bootstrap/custom.js"></script>
+<script src="{% static 'js/bootstrap/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/bootstrap/jquery.sticky.js' %}"></script>
+<script src="{% static 'js/bootstrap/click-scroll.js' %}"></script>
+<script src="{% static 'js/bootstrap/custom.js' %}"></script>
 </body>
 </html>
