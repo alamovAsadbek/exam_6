@@ -8,3 +8,7 @@ def feedbacksView(request):
 # Home page view
 def landingPageView(request):
     return render(request, 'index/index.html')
+
+
+def commentsView(request):
+    return render(request, 'comments/comment.html')
