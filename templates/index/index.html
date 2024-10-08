@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="uz">
 <head>
     <meta charset="utf-8">
@@ -31,6 +32,9 @@
 <body>
 
 <main>
+    {#    NAVBAR #}
+    {% include 'layouts/landing_page_navbar/landing_navbar.html' %}
+    {#   END NAVBAR #}
 
     <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
         <div class="container">
@@ -633,10 +637,9 @@
             </div>
         </div>
     </section>
-    
+
     <!--footer-->
-
-
+    {% include 'layouts/footer/footer.html' %}
     <!--footer-->
 </main>
 
