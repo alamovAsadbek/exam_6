@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
-from feedbacks.models import FeedbackModel
+from .models import FeedbackModel
 
 
 @admin.register(FeedbackModel)
