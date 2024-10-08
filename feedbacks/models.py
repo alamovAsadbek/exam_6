@@ -7,7 +7,7 @@ class FeedbackModel(models.Model):
     title = models.CharField(max_length=200, verbose_name=_('Title'))
     description = models.TextField(verbose_name=_('Description'))
     status = models.CharField(max_length=20, verbose_name=_('Status'))
-    user = models.ForeignKey('UserModel', on_delete=models.CASCADE, null=True, verbose_name=_('User'))
+    user = models.ForeignKey('users.UserModel', on_delete=models.CASCADE, null=True, verbose_name=_('User'))
     likes = models.IntegerField(default=0, verbose_name=_('Likes'))
     see = models.IntegerField(default=0, verbose_name=_('See'))
 
