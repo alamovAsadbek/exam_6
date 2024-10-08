@@ -1,10 +1,11 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 
 from comments.models import CommentModel
 
 
 @admin.register(CommentModel)
-class CommentAdmin(admin.ModelAdmin):
+class CommentAdmin(TranslationAdmin):
     list_display = ('text', 'user', 'feedback')
 
     class Media:

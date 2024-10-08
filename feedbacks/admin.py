@@ -1,10 +1,11 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 
 from feedbacks.models import FeedbackModel
 
 
 @admin.register(FeedbackModel)
-class FeedbackModelAdmin(admin.ModelAdmin):
+class FeedbackModelAdmin(TranslationAdmin):
     list_display = ('title', 'description', 'status', 'created_at', 'updated_at')
 
     class Media:
