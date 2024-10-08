@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render
 
 
@@ -20,6 +21,11 @@ def offerFormView(request):
 
 def loginView(request):
     return render(request, 'auth/login/login.html')
+
+
+def logoutView(request):
+    logout(request)
+    return render(request, 'index/index.html')
 
 
 def registerView(request):
