@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def feedbacksView(request):
+    return render(request, 'offers/offer.html')
