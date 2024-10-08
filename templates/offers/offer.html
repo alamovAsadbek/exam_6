@@ -26,13 +26,13 @@
 
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="offer.html">
-            <i><img src="../../{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
+        <a class="navbar-brand" href="{% url 'feedbacks' %}">
+            <i><img src="{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
             <span>Najot Ta'lim</span>
         </a>
 
         <div class="d-lg-none ms-auto me-3">
-            <a href="../../main/auth/login/login.html" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
+            <a href="{% url 'login' %}" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                 <i class="btn-icon bi-person"></i>
                 <span>Log in</span>
             </a>
@@ -50,11 +50,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="../forms/offer/offer-form.html">Write an offer</a>
+                    <a class="nav-link click-scroll" href="{% url 'create_feedback' %}">Write an offer</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="../../index.html">Landing page</a>
+                    <a class="nav-link click-scroll" href="{% url 'home' %}">Landing page</a>
                 </li>
 
                 <li class="nav-item">
@@ -62,11 +62,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="../404/404.html">404</a>
+                    <a class="nav-link click-scroll" href="#">404</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="../profile/profile.html">Profile</a>
+                    <a class="nav-link click-scroll" href="{% url 'profile' %}">Profile</a>
                 </li>
 
                 <li class="nav-item">
