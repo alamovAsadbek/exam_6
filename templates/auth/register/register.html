@@ -1,12 +1,12 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register | Najot Ta'lim - Feedback site </title>
-    <link rel="shortcut icon" type="ico" href="../../../files/images/favicon.ico"/>
-    <link rel="stylesheet" href="../../../css/auth/register/style.css">
+    <link rel="shortcut icon" type="ico" href="{% static 'files/images/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'css/auth/register/style.css' %}">
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -14,13 +14,13 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link href="../../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
 
-    <link href="../../../css/bootstrap/bootstrap-icons.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap-icons.css' %}" rel="stylesheet">
 
-    <link href="../../../css/bootstrap/templatemo-ebook-landing.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/templatemo-ebook-landing.css' %}" rel="stylesheet">
 
-    <link rel="icon" href="../../../files/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{% static 'files/images/favicon.ico' %}" type="image/x-icon">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
     <div class="main-div">
         <div class="main-logo">
             <a href="../../../index.html" style="color: #000000">
-                <img src="../../../files/images/logo.png" alt="404" class="logo-style">
+                <img src="{% static 'files/images/logo.png' %}" alt="404" class="logo-style">
                 Najot Ta'lim Feedback
             </a>
         </div>
