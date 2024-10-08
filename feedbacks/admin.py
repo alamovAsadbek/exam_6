@@ -6,6 +6,7 @@ from feedbacks.models import FeedbackModel
 @admin.register(FeedbackModel)
 class FeedbackModelAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'status', 'created_at', 'updated_at')
+
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
