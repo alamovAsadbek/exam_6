@@ -38,7 +38,11 @@
         </div>
         <div class="col-md-6">
             <div class="btn-group mb-3" role="group">
-                <button type="button" class="btn btn-secondary" id="signInBtn">Offers</button>
+                {% if request.user.is_authenticated %}
+                    <button type="button" class="btn btn-secondary" id="signInBtn">Offers</button>
+                {% else %}
+                    <button type="button" class="btn btn-secondary" id="signInBtn" disabled>Offers</button>
+                {% endif %}
                 <button type="button" class="btn btn-secondary active" id="signUpBtn">Problems</button>
             </div>
             <a href="{% url 'home' %}" type="button" class="btn btn-secondary back-home">Home</a>
