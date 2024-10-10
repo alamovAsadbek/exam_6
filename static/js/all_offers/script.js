@@ -3,10 +3,10 @@ let currentPage = 1;
 let currentData = 'offers';
 
 function renderCards() {
-    const offerCards = document.querySelectorAll('.offer');
-    const demandCards = document.querySelectorAll('.demand');
-    const myOfferCards = document.querySelectorAll('.my-offers');
-    const myWrittenOffers = document.querySelectorAll('.my-written-offers');
+    const offerCards = document.querySelectorAll('div.offer');
+    const demandCards = document.querySelectorAll('div.demand');
+    const myOfferCards = document.querySelectorAll('div.my-offers');
+    const myWrittenOffers = document.querySelectorAll('div.my-written-offers');
 
     // Hide all cards
     offerCards.forEach(card => card.style.display = 'none');
