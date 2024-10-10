@@ -38,6 +38,7 @@ def commentsView(request):
 
 def offerFormView(request):
     if request.method == 'POST':
+        print(request.POST)
         form = FeedbackOfferForm(request.POST)
         if request.POST in 'problemForm':
             form = FeedbackProblemForm(request.POST)
