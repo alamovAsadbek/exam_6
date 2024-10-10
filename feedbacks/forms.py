@@ -8,3 +8,9 @@ class FeedbackProblemForm(forms.ModelForm):
     class Meta:
         model = FeedbackModel
         fields = ['title', 'description', 'feedback_type']
+
+
+class FeedbackOfferForm(forms.ModelForm):
+    class Meta:
+        model = FeedbackModel
+        fields = ['title', 'description', 'feedback_type', 'user']
