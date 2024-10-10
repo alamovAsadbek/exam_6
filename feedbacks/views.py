@@ -87,3 +87,8 @@ def send_email_verification(request, user):
 
     message.attach_alternative(text_content, "text/html")
     message.send()
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
