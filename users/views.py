@@ -40,7 +40,7 @@ def send_email_verification(request, user):
     full_url = f"http://{current_site.domain}/{verification_url}"
 
     text_content = render_to_string(
-        'main/auth/register/verify-email.html',
+        'components/verify_email/verify_email.html',
         {
             'user': user,
             'full_url': full_url,
