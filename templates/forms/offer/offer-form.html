@@ -71,11 +71,11 @@
                 <div class="form-group mt-4">
                     <label for="offerTitle">{% trans 'Title' %}</label>
                     <input type="text" class="form-control" id="offerTitle"
-                           placeholder='{% trans 'Enter offer title' %}'>
+                           placeholder='{% trans 'Enter offer title' %}' name="title">
                 </div>
                 <div class="form-group mt-2">
                     <label for="offerDescription">{% trans 'Description' %}</label>
-                    <textarea class="form-control" id="offerDescription"
+                    <textarea class="form-control" id="offerDescription" name="description"
                               placeholder='{% trans 'Enter offer description' %}' maxlength="2000"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mt-4" name="offerForm">{% trans 'Submit' %}</button>
