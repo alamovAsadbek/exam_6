@@ -9,7 +9,7 @@ from django.utils.encoding import force_str, force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from config.settings import EMAIL_HOST_USER
-from feedbacks.forms import FeedbackOfferForm, FeedbackProblemForm
+from feedbacks.forms import FeedbackMainForm
 from frequently_questions.models import FrequentlyQuestionsModel
 from team_users.models import TeamUserModel
 from users.forms import UserLoginForm, UserRegisterForm
@@ -39,9 +39,7 @@ def commentsView(request):
 def offerFormView(request):
     if request.method == 'POST':
         print(request.POST)
-        form = FeedbackOfferForm(request.POST)
-        if request.POST in 'problemForm':
-            form = FeedbackProblemForm(request.POST)
+        form = FeedbackMainForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect(reverse_lazy('home'))
