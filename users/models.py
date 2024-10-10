@@ -7,6 +7,7 @@ class UserModel(models.Model):
     full_name = models.CharField(max_length=100, verbose_name=_('Full Name'))
     linkedin_url = models.URLField(max_length=200, verbose_name=_('LinkedIn URL'), null=True, blank=True)
     email = models.EmailField(max_length=100, verbose_name=_('Email'))
+    status = models.BooleanField(default=False, verbose_name=_('Status'))
     image = models.ImageField(upload_to='team_avatars/', verbose_name=_('Profile Image'), null=True, blank=True)
     password = models.CharField(max_length=100, verbose_name=_('Password'))
 
