@@ -99,6 +99,7 @@ def register_view(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
+            send_email_verification(request, user)
             return redirect(reverse_lazy('login'))
         else:
             errors = form.errors
@@ -133,7 +134,7 @@ def verify_email(request, uidb64, token):
     uid = force_str(urlsafe_base64_decode(uidb64))
     user = UserModel.objects.get(pk=uid)
     if user is not None and email_token_generator.check_token(user, token):
-        user.is_active = True
+        user.status = True
         user.save()
         messages.success(request, 'Account activated')
         return redirect(reverse_lazy('login'))
