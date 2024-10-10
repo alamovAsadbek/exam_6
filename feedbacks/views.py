@@ -1,7 +1,10 @@
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
 
 from users.forms import UserRegisterForm
+from users.models import UserModel
 
 
 def feedbacksView(request):
@@ -43,5 +46,16 @@ def profileView(request):
     return render(request, 'profile/profile.html')
 
 
-def verifyEmailView(request):
-    return render(request, 'profile/profile.html')
+def verifyEmailView(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(force_bytes(uidb64)))
+        user = UserModel.objects.get(pk=uid)
+        if email_token_generator.check_token(user, token):
+            user.is_active = True
+            user.save()
+            return redirect(reverse_lazy('login'))
+        else:
+            return redirect(reverse_lazy('login'))
+    except Exception as e:
+        print(f'Error: {e}')
+        return redirect(reverse_lazy('login'))
