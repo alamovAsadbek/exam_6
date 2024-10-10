@@ -40,7 +40,6 @@ def offerFormView(request):
     if request.method == 'POST':
         keys = request.POST.keys()
         second_key = list(keys)[1]
-        print(second_key)
         form = FeedbackOfferForm(request.POST)
         if second_key == 'problemForm':
             form = FeedbackProblemForm(request.POST)
