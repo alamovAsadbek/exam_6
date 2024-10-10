@@ -38,7 +38,7 @@ def commentsView(request):
 
 def offerFormView(request):
     if request.method == 'POST':
-        print(request.POST)
+        print(request.readline())
         form = FeedbackMainForm(request.POST)
         if form.is_valid():
             form.save()

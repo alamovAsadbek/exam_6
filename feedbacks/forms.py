@@ -17,4 +17,5 @@ class FeedbackOfferForm(forms.ModelForm):
 
 
 class FeedbackMainForm(forms.ModelForm):
-    print(forms.ModelForm)
+    for i in forms.ModelForm.base_fields:
+        print(i)
