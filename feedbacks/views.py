@@ -45,6 +45,8 @@ def offerFormView(request):
             form = FeedbackProblemForm(request.POST)
         if form.is_valid():
             form.cleaned_data['feedback_type'] = 'offer'
+            if second_key == 'problemForm':
+                form.cleaned_data['feedback_type'] = 'problem'
             print(form.cleaned_data)
             form.save()
             return redirect(reverse_lazy('home'))
