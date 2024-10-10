@@ -1,10 +1,12 @@
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
-from django.utils.encoding import force_str
+from django.urls import reverse_lazy
+from django.utils.encoding import force_str, force_bytes
 from django.utils.http import urlsafe_base64_decode
 
 from users.forms import UserRegisterForm
 from users.models import UserModel
+from users.token import email_token_generator
 
 
 def feedbacksView(request):
