@@ -109,6 +109,7 @@ def register_view(request):
 
 
 def send_email_verification(request, user):
+    print(user.id)
     token = email_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     current_site = get_current_site(request)
