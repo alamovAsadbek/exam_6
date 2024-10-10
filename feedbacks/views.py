@@ -36,7 +36,16 @@ def commentsView(request):
 
 
 def offerFormView(request):
-    return render(request, 'forms/offer/offer-form.html')
+    if request.method == 'POST':
+        form = OfferForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy('home'))
+        else:
+            errors = form.errors
+            return render(request, 'forms/offer/offer-form.html', {'errors': errors})
+    else:
+        return render(request, 'forms/offer/offer-form.html')
 
 
 def logoutView(request):
