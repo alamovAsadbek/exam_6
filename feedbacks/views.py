@@ -65,19 +65,19 @@ def verify_email(request, uidb64, token):
             user.is_active = True
             user.save()
             login(request, user)
-            return redirect(reverse_lazy('common:home'))
+            return redirect(reverse_lazy('home'))
         else:
-            return redirect(reverse_lazy('users:login'))
+            return redirect(reverse_lazy('login'))
     except Exception as e:
         print(f'Error: {e}')
-        return redirect(reverse_lazy('users:login'))
+        return redirect(reverse_lazy('login'))
 
 
 def send_email_verification(request, user):
     token = email_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     domain = request.get_host()
-    verification_url = reverse('users:verify-email', kwargs={'uidb64': uid, 'token': token})
+    verification_url = reverse('verify_email', kwargs={'uidb64': uid, 'token': token})
     full_url = f'http://{domain}{verification_url}'
 
     text_content = render_to_string(
