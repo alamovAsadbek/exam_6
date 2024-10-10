@@ -6,6 +6,8 @@ from frequently_questions.models import FrequentlyQuestionsModel
 
 @admin.register(FrequentlyQuestionsModel)
 class FrequentlyQuestionsAdmin(TranslationAdmin):
+    list_display = ('id', 'title', 'description')
+
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
