@@ -50,6 +50,7 @@
             <a href="{% url 'home' %}" type="button" class="btn btn-secondary back-home"
                style="margin-top: 35px;">{% trans 'Home' %}</a>
             <form id="signUpForm" name="problemForm" action="{% url 'create_feedback' %}" method="post">
+                {% csrf_token %}
                 <h4 class="form-title">{% trans 'Submit a problem' %}</h4>
                 <div class="form-group mt-4">
                     <label for="problemTitle">{% trans 'Title' %}</label>
@@ -65,6 +66,7 @@
             </form>
             <form id="signInForm" style="display: none;" name="offerForm" action="{% url 'create_feedback' %}"
                   method="post">
+                {% csrf_token %}
                 <h4 class="form-title">{% trans 'Submit an offer' %}</h4>
                 <div class="form-group mt-4">
                     <label for="offerTitle">{% trans 'Title' %}</label>
