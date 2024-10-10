@@ -111,9 +111,9 @@
                     <nav id="navbar-example3" class="h-100 flex-column align-items-stretch">
                         <nav class="nav nav-pills flex-column">
                             {% for question in all_frequently_asked_questions %}
-                                <a class="nav-link smoothscroll" href="item-{{ forloop.counter }}"><strong>Question
-                                    1: </strong> How can I
-                                    submit feedback?</a>
+                                <a class="nav-link smoothscroll"
+                                   href="item-{{ forloop.counter }}"><strong>{% trans 'Question' %}
+                                    {{ forloop.counter }}: </strong> {{ question.title }}</a>
                             {% endfor %}
                         </nav>
                     </nav>
