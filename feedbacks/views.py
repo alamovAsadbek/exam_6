@@ -9,7 +9,7 @@ from django.utils.encoding import force_str, force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from config.settings import EMAIL_HOST_USER
-from users.forms import UserRegisterForm, UserLoginForm
+from users.forms import UserLoginForm, UserRegisterForm
 from users.models import UserModel
 from users.token import email_token_generator
 
@@ -36,13 +36,21 @@ def logoutView(request):
     return render(request, 'index/index.html')
 
 
-def registerView(request):
+def register_view(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')
-    return render(request, 'auth/register/register.html')
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password1'])
+            user.is_active = False
+            user.save()
+            send_email_verification(request, user)
+            return redirect(reverse_lazy('users:login'))
+        else:
+            errors = form.errors
+            return render(request, 'auth/register/register.html', {'errors': errors})
+    else:
+        return render(request, 'auth/register/register.html')
 
 
 def profileView(request):
