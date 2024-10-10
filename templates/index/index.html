@@ -111,21 +111,10 @@
                     <nav id="navbar-example3" class="h-100 flex-column align-items-stretch">
                         <nav class="nav nav-pills flex-column">
                             {% for question in all_frequently_asked_questions %}
+                                <a class="nav-link smoothscroll" href="item-{{ forloop.counter }}"><strong>Question
+                                    1: </strong> How can I
+                                    submit feedback?</a>
                             {% endfor %}
-                            <a class="nav-link smoothscroll" href="#item-1"><strong>Question 1: </strong> How can I
-                                submit feedback?</a>
-
-                            <a class="nav-link smoothscroll" href="#item-2"><strong>Question 2: </strong>
-                                How is feedback processed and what results are published?</a>
-
-                            <a class="nav-link smoothscroll" href="#item-3"><strong>Question 3: </strong>Is my feedback
-                                anonymous?</a>
-
-                            <a class="nav-link smoothscroll" href="#item-4"><strong>Question 4: </strong>Can I
-                                participate in discussions on the site?</a>
-
-                            <a class="nav-link smoothscroll" href="#item-5"><strong>Question 5: </strong>What topics can
-                                be discussed in the forums?</a>
                         </nav>
                     </nav>
                 </div>
