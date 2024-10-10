@@ -41,11 +41,11 @@ def register_view(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password1'])
+            user.set_password(form.cleaned_data['password'])
             user.is_active = False
             user.save()
             send_email_verification(request, user)
-            return redirect(reverse_lazy('users:login'))
+            return redirect(reverse_lazy('login'))
         else:
             errors = form.errors
             return render(request, 'auth/register/register.html', {'errors': errors})
