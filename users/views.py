@@ -144,7 +144,7 @@ def verify_email(request, uidb64, token):
 
 
 def login_view(request):
-    pass
+    return render(request, 'auth/login/login.html')
 
 
 def profileView(request):
