@@ -16,6 +16,4 @@ class FeedbackOfferForm(forms.ModelForm):
         fields = ['title', 'description', 'feedback_type', 'user']
 
 
-class FeedbackMainForm(forms.ModelForm):
-    for i in forms.ModelForm.base_fields:
-        print(i)
+

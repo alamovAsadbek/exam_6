@@ -9,12 +9,12 @@ from django.utils.encoding import force_str, force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from config.settings import EMAIL_HOST_USER
-from feedbacks.forms import FeedbackMainForm
 from frequently_questions.models import FrequentlyQuestionsModel
 from team_users.models import TeamUserModel
 from users.forms import UserLoginForm, UserRegisterForm
 from users.models import UserModel
 from users.token import email_token_generator
+from .forms import FeedbackProblemForm, FeedbackOfferForm
 
 
 def feedbacksView(request):
@@ -38,16 +38,20 @@ def commentsView(request):
 
 def offerFormView(request):
     if request.method == 'POST':
-        print(request.readline())
-        form = FeedbackMainForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse_lazy('home'))
-        else:
-            errors = form.errors
-            return render(request, 'forms/offer/offer-form.html', {'errors': errors})
+        if 'problem' in request.POST:
+            problem_form = FeedbackProblemForm(request.POST)
+            if problem_form.is_valid():
+                problem_form.save()
+                return redirect('home')
+        elif 'offer' in request.POST:
+            offer_form = FeedbackOfferForm(request.POST)
+            if offer_form.is_valid():
+                offer_form.save()
+                return redirect('feedbacks')
     else:
-        return render(request, 'forms/offer/offer-form.html')
+        problem_form = FeedbackProblemForm()
+        offer_form = FeedbackOfferForm()
+        return render(request, 'forms/offer/offer-form.html', {'problem_form': problem_form, 'offer_form': offer_form})
 
 
 def logoutView(request):
