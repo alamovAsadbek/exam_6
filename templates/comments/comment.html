@@ -190,7 +190,7 @@
             <div class="detail-owner">
                 <div class="detail-owner-avatar">
                     Owner <br><br>
-                    <a href="https://www.linkedin.com/in/alamov-asadbek/" class="follow-me" target="_blank">
+                    <a href="{{ feedback.user.linkedin_url }}" class="follow-me" target="_blank">
                             <span style="color: #9c9cab">
                              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
                                   viewBox="0 0 48 48">
@@ -202,9 +202,9 @@
                              Follow on LinkedIn
                             </span>
                         <span class="developer">
-                     <img src="{% static 'files/images/participants_images/alamov_asadbek.jpg' %}"
+                     <img src="{{ feedback.user.image.url }}"
                           alt="404avatar"/>
-                     A'lamov Asadbek - @alamov_asadbek
+                     {{ feedback.user.full_name }} - {{ feedback.user.email }}
                     </span>
                     </a>
                 </div>
