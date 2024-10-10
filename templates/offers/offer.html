@@ -70,7 +70,7 @@
                         <div class="card-text">
                             <div class="title-total">
                                 <div class="title">{{ offer.user.full_name }}</div>
-                                <a href='#'>{{ offer.title }}</a>
+                                <a href='{% url 'feedback_detail' offer.pk %}'>{{ offer.title }}</a>
                                 <div class="desc">
                                     {{ offer.description|truncatechars:100 }}
                                 </div>
