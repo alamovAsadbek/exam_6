@@ -1,5 +1,7 @@
-from django.contrib.auth import logout, login
+from django.contrib.auth import logout, login, authenticate
+from django.core.exceptions import ValidationError
 from django.core.mail import EmailMultiAlternatives
+from django.core.validators import validate_email
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
@@ -7,7 +9,7 @@ from django.utils.encoding import force_str, force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from config.settings import EMAIL_HOST_USER
-from users.forms import UserRegisterForm
+from users.forms import UserRegisterForm, UserLoginForm
 from users.models import UserModel
 from users.token import email_token_generator
 
@@ -88,7 +90,7 @@ def send_email_verification(request, user):
 
 def login_view(request):
     if request.method == 'POST':
-        form = Login(request.POST)
+        form = UserLoginForm(request.POST)
         if form.is_valid():
             username_or_email = form.cleaned_data['username_or_email']
             password = form.cleaned_data['password']
@@ -101,13 +103,13 @@ def login_view(request):
                 is_email = False
 
             if is_email:
-                user_data = User.objects.filter(email=username_or_email.lower()).first()
+                user_data = UserModel.objects.filter(email=username_or_email.lower()).first()
                 if user_data and user_data.is_active:
                     username = user_data.username
                 else:
                     username = None
             else:
-                user_data = User.objects.filter(username=username_or_email.lower()).first()
+                user_data = UserModel.objects.filter(username=username_or_email.lower()).first()
                 if user_data and user_data.is_active:
                     username = username_or_email
                 else:
@@ -119,11 +121,11 @@ def login_view(request):
                     login(request, user)
                     return redirect(reverse_lazy('home'))
                 else:
-                    return render(request, 'auth/login.html', {
+                    return render(request, 'auth/login/login.html', {
                         'error': 'Invalid login details or account not activated. Please check your email.'
                     })
             else:
-                return render(request, 'auth/login.html', {'error': 'Invalid login details.'})
+                return render(request, 'auth/login/login.html', {'error': 'Invalid login details.'})
 
 
 def logout_view(request):
