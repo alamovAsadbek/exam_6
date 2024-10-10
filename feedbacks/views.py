@@ -1,24 +1,18 @@
-from django.contrib.auth import logout, login, authenticate
-from django.core.exceptions import ValidationError
-from django.core.mail import EmailMultiAlternatives
-from django.core.validators import validate_email
 from django.shortcuts import render, redirect
-from django.template.loader import render_to_string
-from django.urls import reverse_lazy, reverse
-from django.utils.encoding import force_str, force_bytes
-from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.urls import reverse_lazy
 
-from config.settings import EMAIL_HOST_USER
 from frequently_questions.models import FrequentlyQuestionsModel
 from team_users.models import TeamUserModel
-from users.forms import UserLoginForm, UserRegisterForm
-from users.models import UserModel
-from users.token import email_token_generator
 from .forms import FeedbackOfferForm, FeedbackProblemForm
+from .models import FeedbackModel
 
 
 def feedbacksView(request):
-    return render(request, 'offers/offer.html')
+    all_feedbacks = FeedbackModel.objects.all()
+    context = {
+        'feedbacks': all_feedbacks
+    }
+    return render(request, 'offers/offer.html', context)
 
 
 # Home page view
@@ -54,5 +48,3 @@ def offerFormView(request):
             return render(request, 'offers/offer.html', {'errors': errors})
     else:
         return render(request, 'forms/offer/offer-form.html')
-
-
