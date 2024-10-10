@@ -88,3 +88,7 @@ def login_view(request):
                 return render(request, template_name='auth/login/login.html')
     else:
         return render(request, 'auth/login/login.html')
+
+
+def profileView(request):
+    return render(request, 'profile/profile.html')
