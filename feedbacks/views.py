@@ -58,7 +58,7 @@ def verifyEmailView(request, uidb64, token):
         if email_token_generator.check_token(user, token):
             user.is_active = True
             user.save()
-            return redirect(reverse_lazy('login'))
+            return render(request, 'components/success/success_page.html')
         else:
             return redirect(reverse_lazy('login'))
     except Exception as e:
