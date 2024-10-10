@@ -63,7 +63,7 @@
 
 
     <section class="py-lg-5"></section>
-    
+
     <section class="book-section section-padding">
         <div class="container">
             <div class="row">
@@ -110,6 +110,8 @@
                 <div class="col-lg-4 col-12">
                     <nav id="navbar-example3" class="h-100 flex-column align-items-stretch">
                         <nav class="nav nav-pills flex-column">
+                            {% for question in all_frequently_asked_questions %}
+                            {% endfor %}
                             <a class="nav-link smoothscroll" href="#item-1"><strong>Question 1: </strong> How can I
                                 submit feedback?</a>
 
