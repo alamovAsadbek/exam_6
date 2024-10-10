@@ -127,6 +127,9 @@
     function validatePasswords() {
         if (passwordInput.value === confirmPasswordInput.value) {
             submitBtn.disabled = false;
+            errorMessage.textContent = '';
+            submitBtn.style.cursor = 'pointer';
+            submitBtn.title = '';
         } else {
             submitBtn.disabled = true;
             errorMessage.textContent = 'Passwords do not match.';
