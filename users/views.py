@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import logout
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
@@ -14,9 +15,7 @@ from users.token import email_token_generator
 
 
 def logoutView(request):
-    user = request.user
-    user.status = False
-    user.save()
+    logout(request)
     return render(request, 'index/index.html')
 
 
@@ -136,7 +135,7 @@ def verify_email(request, uidb64, token):
     uid = force_str(urlsafe_base64_decode(uidb64))
     user = UserModel.objects.get(pk=uid)
     if user is not None and email_token_generator.check_token(user, token):
-        user.status = True
+        user.is_active = True
         user.save()
         messages.success(request, 'Account activated')
         return redirect(reverse_lazy('login'))
