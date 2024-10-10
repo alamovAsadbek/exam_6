@@ -126,8 +126,3 @@ def login_view(request):
                     })
             else:
                 return render(request, 'auth/login/login.html', {'error': 'Invalid login details.'})
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('login')
