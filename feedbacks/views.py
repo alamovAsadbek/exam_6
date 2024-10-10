@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
+from comments.models import CommentModel
 from frequently_questions.models import FrequentlyQuestionsModel
 from team_users.models import TeamUserModel
 from .forms import FeedbackOfferForm, FeedbackProblemForm
@@ -50,3 +51,13 @@ def offerFormView(request):
             return render(request, 'offers/offer.html', {'errors': errors})
     else:
         return render(request, 'forms/offer/offer-form.html')
+
+
+def feedbackDetailView(request, pk):
+    feedback = FeedbackModel.objects.get(pk=pk)
+    comments = CommentModel.objects.filter(feedback=feedback)
+    context = {
+        'feedback': feedback,
+        'comments': comments
+    }
+    return render(request, 'comments/comment.html', context)
