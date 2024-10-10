@@ -9,7 +9,9 @@ from .models import FeedbackModel
 
 def feedbacksView(request):
     problems = FeedbackModel.objects.all().filter(feedback_type='problem')
-    offers = FeedbackModel.objects.all().filter(feedback_type='offer')
+    offers = FeedbackModel.objects.all().filter(
+        feedback_type='offer' and FeedbackModel.user.id == request.user.id).order_by(
+        '-created_at')
     context = {
         'problems': problems,
         'offers': offers
