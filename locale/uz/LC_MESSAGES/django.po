@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-10 13:29+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+#: .\comments\models.py:6 .\comments\models.py:14
+msgid "Comment"
+msgstr "Fikrlar"
+
+#: .\comments\models.py:7 .\feedbacks\models.py:10 .\users\models.py:19
+msgid "User"
+msgstr "Foydalanuvchilar"
+
+#: .\comments\models.py:8 .\feedbacks\models.py:28
+msgid "Feedback"
+msgstr "Fikr-mulohazalar"
+
+#: .\comments\models.py:10 .\feedbacks\models.py:20
+#: .\frequently_questions\models.py:9
+msgid "Created at"
+msgstr "Yaratilgan vaqti"
+
+#: .\comments\models.py:11 .\feedbacks\models.py:21
+#: .\frequently_questions\models.py:10
+msgid "Updated at"
+msgstr "Yangilangan vaqti"
+
+#: .\comments\models.py:15 .\templates\layouts\user_navbar\user_navbar.html:38
+msgid "Comments"
+msgstr "Komentlar"
+
+#: .\feedbacks\models.py:7 .\frequently_questions\models.py:6
+msgid "Title"
+msgstr "Sarlavha"
+
+#: .\feedbacks\models.py:8 .\frequently_questions\models.py:7
+#: .\team_users\models.py:10
+msgid "Description"
+msgstr "Qo'shimcha ma'lumot"
+
+#: .\feedbacks\models.py:9
+msgid "Status"
+msgstr "Status"
+
+#: .\feedbacks\models.py:11
+msgid "Likes"
+msgstr "Yoqtirganlar"
+
+#: .\feedbacks\models.py:12
+msgid "See"
+msgstr "Ko'rganlar"
+
+#: .\feedbacks\models.py:18
+msgid "Feedback Type"
+msgstr "Fikr-mulohaza turini tanlash"
+
+#: .\feedbacks\models.py:27
+msgid "Feedbacks"
+msgstr "Fikr-mulohazalar"
+
+#: .\frequently_questions\models.py:16 .\frequently_questions\models.py:17
+msgid "Frequently Questions"
+msgstr "Tez-tez so'raladigan savollar"
+
+#: .\team_users\models.py:6
+msgid "First Name"
+msgstr "Ismi"
+
+#: .\team_users\models.py:7
+msgid "Last Name"
+msgstr "Familiyasi"
+
+#: .\team_users\models.py:8
+msgid "Image"
+msgstr "Rasmi"
+
+#: .\team_users\models.py:9
+msgid "Role"
+msgstr "Roli"
+
+#: .\team_users\models.py:12 .\users\models.py:12
+msgid "Created At"
+msgstr "Yaratilgan vaqti"
+
+#: .\team_users\models.py:13 .\users\models.py:13
+msgid "Updated At"
+msgstr "Yangilangan vaqti"
+
+#: .\team_users\models.py:16
+msgid "Team User"
+msgstr "Jamoa foydalanuvchisi"
+
+#: .\team_users\models.py:17
+msgid "Team Users"
+msgstr "Jamoa foydalanuvchilari"
+
+#: .\templates\index\index.html:45
+msgid "Exchange of ideas"
+msgstr "G'oya almashtirish"
+
+#: .\templates\index\index.html:47
+msgid "Online platform for requests and offers"
+msgstr "So'rovlar va takliflar uchun onlayn platforma"
+
+#: .\templates\index\index.html:50
+msgid "Problems"
+msgstr "Muammolar"
+
+#: .\templates\index\index.html:53
+msgid "Make an offer"
+msgstr "Taklif bildirish"
+
+#: .\templates\layouts\user_navbar\user_navbar.html:26
+msgid "Home"
+msgstr "Asosiy"
+
+#: .\templates\layouts\user_navbar\user_navbar.html:30
+msgid "Write an offer"
+msgstr "Taklif yozish"
+
+#: .\templates\layouts\user_navbar\user_navbar.html:34
+msgid "Landing page"
+msgstr "Asosiy sahifa"
+
+#: .\templates\layouts\user_navbar\user_navbar.html:46
+msgid "Profile"
+msgstr "Profil"
+
+#: .\users\models.py:6
+msgid "Full Name"
+msgstr "To'liq ism"
+
+#: .\users\models.py:7
+msgid "LinkedIn URL"
+msgstr "LinkedIn URL"
+
+#: .\users\models.py:8
+msgid "Email"
+msgstr "Pochta manzili"
+
+#: .\users\models.py:9
+msgid "Profile Image"
+msgstr "Profil rasmi"
+
+#: .\users\models.py:10
+msgid "Password"
+msgstr "Parol"
+
+#: .\users\models.py:20
+msgid "Users"
+msgstr "Foydalanuvchilar"
