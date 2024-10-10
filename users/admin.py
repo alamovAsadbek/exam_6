@@ -6,8 +6,6 @@ from users.models import UserModel
 
 @admin.register(UserModel)
 class UserModelAdmin(TranslationAdmin):
-    list_display = ('id', 'email', 'fullname',)
-
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
