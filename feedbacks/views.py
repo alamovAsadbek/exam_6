@@ -29,6 +29,8 @@ def logoutView(request):
 
 
 def registerView(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
     return render(request, 'auth/register/register.html')
 
 
