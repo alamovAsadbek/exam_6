@@ -40,26 +40,28 @@
         <div class="col-md-6">
             <div class="btn-group mb-3" role="group">
                 {% if request.user.is_authenticated %}
-                    <button type="button" class="btn btn-secondary" id="signInBtn">Offers</button>
+                    <button type="button" class="btn btn-secondary" id="signInBtn">{% trans 'Offers' %}</button>
                 {% else %}
-                    <button type="button" class="btn btn-secondary" id="signInBtn" disabled>Offers</button>
+                    <button type="button" class="btn btn-secondary" id="signInBtn"
+                            disabled>{% trans 'Offers' %}</button>
                 {% endif %}
-                <button type="button" class="btn btn-secondary active" id="signUpBtn">Problems</button>
+                <button type="button" class="btn btn-secondary active" id="signUpBtn">{% trans 'Problems' %}</button>
             </div>
             <a href="{% url 'home' %}" type="button" class="btn btn-secondary back-home"
                style="margin-top: 35px;">Home</a>
             <form id="signUpForm">
-                <h4 class="form-title">Submit a problem</h4>
+                <h4 class="form-title">{% trans 'Submit a problem' %}</h4>
                 <div class="form-group mt-4">
-                    <label for="problemTitle">Title</label>
-                    <input type="text" class="form-control" id="problemTitle" placeholder="Enter problem title">
+                    <label for="problemTitle">{% trans 'Title' %}</label>
+                    <input type="text" class="form-control" id="problemTitle"
+                           placeholder='{% trans "Enter problem title" %}'>
                 </div>
                 <div class="form-group mt-2">
-                    <label for="problemDescription">Description</label>
+                    <label for="problemDescription">{% trans 'Description' %}</label>
                     <textarea class="form-control mt-1" id="problemDescription"
-                              placeholder="Enter problem description" maxlength="2000"></textarea>
+                              placeholder="{% trans 'Enter problem description' %}" maxlength="2000"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                <button type="submit" class="btn btn-primary mt-4">{% trans 'Submit' %}</button>
             </form>
             <form id="signInForm" style="display: none;">
                 <h4 class="form-title">{% trans 'Submit an offer' %}</h4>
