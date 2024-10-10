@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import logout
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
@@ -15,7 +14,9 @@ from users.token import email_token_generator
 
 
 def logoutView(request):
-    logout(request)
+    user = request.user
+    user.status = False
+    user.save()
     return render(request, 'index/index.html')
 
 
