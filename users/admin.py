@@ -5,7 +5,7 @@ from users.models import UserModel
 
 
 @admin.register(UserModel)
-class UserAdmin(TranslationAdmin):
+class UserModelAdmin(TranslationAdmin):
     list_display = ('id', 'email', 'first_name', 'last_name',)
 
     class Media:
