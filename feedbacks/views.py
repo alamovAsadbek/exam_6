@@ -10,6 +10,7 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from config.settings import EMAIL_HOST_USER
 from frequently_questions.models import FrequentlyQuestionsModel
+from team_users.models import TeamUserModel
 from users.forms import UserLoginForm, UserRegisterForm
 from users.models import UserModel
 from users.token import email_token_generator
@@ -22,8 +23,10 @@ def feedbacksView(request):
 # Home page view
 def landingPageView(request):
     all_frequently_asked_questions = FrequentlyQuestionsModel.objects.all()
+    team_members = TeamUserModel.objects.all()
     context = {
-        'all_frequently_asked_questions': all_frequently_asked_questions
+        'all_frequently_asked_questions': all_frequently_asked_questions,
+        'team_members': team_members
     }
     return render(request, 'index/index.html', context)
 
