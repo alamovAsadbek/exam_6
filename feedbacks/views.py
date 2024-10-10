@@ -1,9 +1,12 @@
 from django.contrib.auth import logout
+from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.template.loader import render_to_string
+from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_str, force_bytes
-from django.utils.http import urlsafe_base64_decode
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
+from config.settings import EMAIL_HOST_USER
 from users.forms import UserRegisterForm
 from users.models import UserModel
 from users.token import email_token_generator
@@ -61,3 +64,26 @@ def verifyEmailView(request, uidb64, token):
     except Exception as e:
         print(f'Error: {e}')
         return redirect(reverse_lazy('login'))
+
+
+def send_email_verification(request, user):
+    token = email_token_generator.make_token(request.user)
+    uid = urlsafe_base64_encode(force_bytes(request.user.pk))
+    domain = request.get_host()
+    verification_url = reverse('verify-email', kwargs={'uidb64': uid, 'token': token})
+    full_url = f'https://{domain}{verification_url}'
+
+    text_content = render_to_string(
+        'components/verify_email/verify_email.html',
+        {'user': user, 'full_url': full_url}
+    )
+
+    message = EmailMultiAlternatives(
+        subject='Verify your email',
+        body=text_content,
+        from_email=EMAIL_HOST_USER,
+        to=[user.email]
+    )
+
+    message.attach_alternative(text_content, "text/html")
+    message.send()
