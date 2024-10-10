@@ -41,3 +41,7 @@ def registerView(request):
 
 def profileView(request):
     return render(request, 'profile/profile.html')
+
+
+def verifyEmailView(request):
+    return render(request, 'profile/profile.html')
