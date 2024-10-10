@@ -92,8 +92,11 @@
                                             <i class="custom-form-icon bi-person"></i>
                                         </span>
                             </div>
+                            <div id="error-message"></div>
                             <div class="col-lg-8 col-md-10 col-8 mx-auto mb-2">
-                                <button type="submit" class="form-control" style="text-align: center">Register</button>
+                                <button type="submit" class="form-control" style="text-align: center" id="submitBtn">
+                                    Register
+                                </button>
                             </div>
                             <div style="padding-top: 10px; text-align: center">
                                 <p style="font-size: 13px">Do you have an account? <a href="{% url 'login' %}">Log
@@ -113,6 +116,26 @@
 <!--SCRIPT-->
 <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
         type="module"></script>
+
+<script>
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm_password');
+    const submitBtn = document.getElementById('submitBtn');
+    const errorMessage = document.getElementById('error-message');
+
+    function validatePasswords() {
+        if (passwordInput.value === confirmPasswordInput.value) {
+            submitBtn.disabled = false;
+            errorMessage.textContent = '';
+        } else {
+            submitBtn.disabled = true;
+            errorMessage.textContent = 'Passwords do not match.';
+        }
+    }
+
+    passwordInput.addEventListener('input', validatePasswords);
+    confirmPasswordInput.addEventListener('input', validatePasswords);
+</script>
 
 <!--SCRIPT-->
 </body>
