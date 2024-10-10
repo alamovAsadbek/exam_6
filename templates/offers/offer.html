@@ -104,16 +104,15 @@
                         </div>
                         <div class="card-text">
                             <div class="title-total">
-                                <div class="title">Ant Collector</div>
-                                <a href='#'>Demands</a>
+                                <div class="title">{{ demand.create_at }}</div>
+                                <a href='#'>{{ demand.title }}</a>
 
-                                <div class="desc">Morgan has collected ants since they were six years old and now has
-                                    many dozen
-                                    ants but none in their pants.
+                                <div class="desc">
+                                    {{ demand.description|truncatechars:100 }}
                                 </div>
                                 <div class="actions">
-                                    <i class="bi bi-heart">15</i>
-                                    <i class="bi bi-eye">25</i>
+                                    <i class="bi bi-heart">{{ demand.likes }}</i>
+                                    <i class="bi bi-eye">{{ demand.see }}</i>
                                     <i class="bi bi-chat">5</i>
                                 </div>
                             </div>
