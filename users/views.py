@@ -98,31 +98,33 @@ def register_view(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
+            user.is_active = False  # Foydalanuvchini dastlab faollashtirmang
             user.save()
             send_email_verification(request, user)
             return redirect(reverse_lazy('login'))
         else:
             errors = form.errors
             return render(request, 'auth/register/register.html', {"errors": errors})
-    return render(request, template_name='auth/register/register.html')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'auth/register/register.html', {'form': form})
 
 
 def send_email_verification(request, user):
-    print(user.id)
     token = email_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     current_site = get_current_site(request)
     verification_url = reverse('verify_email', kwargs={'uidb64': uid, 'token': token})
-    full_url = f"http://{current_site.domain}/{verification_url}"
-    text_content = render_to_string(
-        'components/verify_email/verify_email.html',
-        {
-            'user': user,
-            'full_url': full_url,
-        }
-    )
+    full_url = f"http://{current_site.domain}{verification_url}"
+
+    subject = 'Email Verification'
+    text_content = render_to_string('components/verify_email/verify_email.html', {
+        'user': user,
+        'full_url': full_url,
+    })
+
     message = EmailMultiAlternatives(
-        subject='Email Verification',
+        subject=subject,
         body=text_content,
         to=[user.email],
         from_email=settings.EMAIL_HOST_USER
@@ -132,16 +134,21 @@ def send_email_verification(request, user):
 
 
 def verify_email(request, uidb64, token):
-    uid = force_str(urlsafe_base64_decode(uidb64))
-    user = UserModel.objects.get(pk=uid)
-    if user is not None and email_token_generator.check_token(user, token):
-        user.is_active = True
-        user.save()
-        messages.success(request, 'Account activated')
-        return redirect(reverse_lazy('login'))
-    else:
-        messages.error(request, 'The verification link is invalid.')
-        return redirect(reverse_lazy('login'))
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = UserModel.objects.get(pk=uid)
+
+        if user is not None and email_token_generator.check_token(user, token):
+            user.is_active = True
+            user.save()
+            messages.success(request, 'Account activated successfully.')
+            return redirect(reverse_lazy('login'))
+        else:
+            messages.error(request, 'The verification link is invalid.')
+    except UserModel.DoesNotExist:
+        messages.error(request, 'User does not exist.')
+
+    return redirect(reverse_lazy('login'))
 
 
 def login_view(request):
