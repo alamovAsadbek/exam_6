@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'feedbacks',
     'users',
     'comments',
-    'team_users'
+    'team_users',
+    'frequently_questions'
 ]
 
 MIDDLEWARE = [
