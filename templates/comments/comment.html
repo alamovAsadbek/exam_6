@@ -25,7 +25,6 @@
     <script src="{% static 'js/comments/comment-manage.js' %}" defer></script>
 </head>
 <body>
-{{ feedback.id }}
 <div class="app">
     <div class="header">
         <div class="col-lg-8 col-md-10 col-8 mx-auto">
@@ -211,8 +210,8 @@
                 </div>
             </div>
             <div class="detail-area-header">
-                <div class="detail-title">Offer title</div>
-                <div class="detail-subtitle">Created 24 Sept 2024</div>
+                <div class="detail-title">{{ feedback.title }}</div>
+                <div class="detail-subtitle">{{ feedback.created_at }}</div>
             </div>
             <div class="detail-photos">
                 <div class="detail-photo-title">
@@ -224,10 +223,7 @@
                     Offer description
                 </div>
                 <div class="detail-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus dicta dolor ea eaque ex
-                    excepturi fugit ipsam magnam nam, non obcaecati odit officia optio qui, sed similique sit suscipit,
-                    ullam vel. A accusantium, culpa deleniti esse facilis, in itaque nisi, odit porro quae quis
-                    repellendus soluta tenetur totam voluptatibus!
+                    {{ feedback.description }}
                 </div>
             </div>
 
