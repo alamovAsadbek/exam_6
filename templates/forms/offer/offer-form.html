@@ -62,6 +62,7 @@
                     <textarea class="form-control mt-1" id="problemDescription"
                               placeholder="{% trans 'Enter problem description' %}" maxlength="2000"></textarea>
                 </div>
+                {{ problem_form.as_p }}
                 <button type="submit" class="btn btn-primary mt-4">{% trans 'Submit' %}</button>
             </form>
             <form id="signInForm" style="display: none;" name="offerForm" action="{% url 'create_feedback' %}"
@@ -78,6 +79,7 @@
                     <textarea class="form-control" id="offerDescription"
                               placeholder='{% trans 'Enter offer description' %}' maxlength="2000"></textarea>
                 </div>
+                {{ offer_form.as_p }}
                 <button type="submit" class="btn btn-primary mt-4">{% trans 'Submit' %}</button>
             </form>
         </div>
