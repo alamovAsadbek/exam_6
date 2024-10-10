@@ -8,9 +8,11 @@ from .models import FeedbackModel
 
 
 def feedbacksView(request):
-    all_feedbacks = FeedbackModel.objects.all()
+    problems = FeedbackModel.objects.all().filter(feedback_type='problem')
+    offers = FeedbackModel.objects.all().filter(feedback_type='offer')
     context = {
-        'feedbacks': all_feedbacks
+        'problems': problems,
+        'offers': offers
     }
     return render(request, 'offers/offer.html', context)
 
