@@ -14,3 +14,7 @@ class FeedbackOfferForm(forms.ModelForm):
     class Meta:
         model = FeedbackModel
         fields = ['title', 'description', 'feedback_type', 'user']
+
+
+class FeedbackMainForm(forms.ModelForm):
+    print(forms.ModelForm)
