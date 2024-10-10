@@ -122,50 +122,14 @@
                 <div class="col-lg-8 col-12">
                     <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
                          class="scrollspy-example-2" tabindex="0">
-                        <div class="scrollspy-example-item" id="item-1">
-                            <h5>1. Question: How can I submit feedback?</h5>
+                        {% for question in all_frequently_asked_questions %}
+                            <div class="scrollspy-example-item" id="item-{{ forloop.counter }}">
+                                <h5>{{ forloop.counter }}. {{ question.title }}</h5>
 
-                            <p>You can submit feedback using the online form available on our site. Simply fill out the
-                                required sections and submit your comments. Anonymity is an option if you prefer.</p>
+                                <p>{{ question.description }}</p>
 
-                        </div>
-
-                        <div class="scrollspy-example-item" id="item-2">
-                            <h5>2. Question: How is feedback processed and what results are published?</h5>
-
-                            <p> Feedback is regularly analyzed. Monthly or quarterly reports summarizing general trends
-                                and improvements are published on our site. Individual feedback responses are not
-                                provided, but general responses and discussion outcomes are shared.</p>
-
-                        </div>
-
-                        <div class="scrollspy-example-item" id="item-3">
-                            <h5>3. Question: Is my feedback anonymous?</h5>
-
-                            <p>
-                                Yes, you can submit feedback anonymously. Your personal information will not be
-                                disclosed, but your feedback will be used for general analysis.
-                            </p>
-                        </div>
-
-                        <div class="scrollspy-example-item" id="item-4">
-                            <h5>4. Question: Can I participate in discussions on the site?</h5>
-
-                            <p>
-                                Yes, the site includes a discussion forum where you can engage with other users. You can
-                                exchange opinions, discuss feedback, and participate in conversations on various topics.
-                            </p>
-                        </div>
-
-                        <div class="scrollspy-example-item" id="item-5">
-                            <h5>5. Question: What topics can be discussed in the forums?</h5>
-
-                            <p>
-                                The forums cover topics such as services, educational processes, teachers, classes, and
-                                other aspects of the educational center’s activities. You can share your opinions and
-                                engage in discussions with other users on these topics.
-                            </p>
-                        </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
 
