@@ -1,5 +1,7 @@
 from django.contrib.auth import logout
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from users.forms import UserRegisterForm
 
 
 def feedbacksView(request):
@@ -30,7 +32,10 @@ def logoutView(request):
 
 def registerView(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
     return render(request, 'auth/register/register.html')
 
 
