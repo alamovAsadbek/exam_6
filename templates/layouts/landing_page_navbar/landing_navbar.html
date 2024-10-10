@@ -24,23 +24,24 @@
             <ul class="navbar-nav ms-lg-auto me-lg-4">
 
                 <li class="nav-item">
-                    <a class="nav-link navbar-nav-scroll" href="#section_1">Home</a>
+                    <a class="nav-link navbar-nav-scroll" href="#section_1">{% trans 'Home' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'create_feedback' %}">Problems</a>
+                    <a class="nav-link" href="{% url 'create_feedback' %}">{% trans 'Problems' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'feedbacks' %}">Offers</a>
+                    <a class="nav-link" href="{% url 'feedbacks' %}">{% trans 'Offers' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'create_comment' 10 %}">Comments</a>
+                    <a class="nav-link" href="{% url 'create_comment' 10 %}">{% trans 'Comments' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <select class="form-select language-select" aria-label="Select language" onchange="location = this.value;">
+                    <select class="form-select language-select" aria-label="Select language"
+                            onchange="location = this.value;">
                         {% get_current_language as LANGUAGE_CODE %}
                         {% get_available_languages as languages %}
                         {% for language in languages %}
