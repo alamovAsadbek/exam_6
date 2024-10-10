@@ -14,7 +14,7 @@ from team_users.models import TeamUserModel
 from users.forms import UserLoginForm, UserRegisterForm
 from users.models import UserModel
 from users.token import email_token_generator
-from .forms import FeedbackOfferForm
+from .forms import FeedbackOfferForm, FeedbackProblemForm
 
 
 def feedbacksView(request):
@@ -38,8 +38,12 @@ def commentsView(request):
 
 def offerFormView(request):
     if request.method == 'POST':
-        print(request.POST)
+        keys = request.POST.keys()
+        second_key = list(keys)[1]
+        print(second_key)
         form = FeedbackOfferForm(request.POST)
+        if second_key == 'problemForm':
+            form = FeedbackProblemForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect(reverse_lazy('home'))
@@ -47,7 +51,7 @@ def offerFormView(request):
             errors = form.errors
             return render(request, 'offers/offer.html', {'errors': errors})
     else:
-        return render(request, 'offers/offer.html')
+        return render(request, 'forms/offer/offer-form.html')
 
 
 def logoutView(request):
