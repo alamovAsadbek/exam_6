@@ -35,7 +35,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="{% url 'create_comment' 10 %}">{% trans 'Comments' %}</a>
+                    <a class="nav-link click-scroll" href="{% url 'create_comment' %}">{% trans 'Comments' %}</a>
                 </li>
 
                 <li class="nav-item">
@@ -47,7 +47,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <select class="form-select language-select" aria-label="Select language" onchange="location = this.value;">
+                    <select class="form-select language-select" aria-label="Select language"
+                            onchange="location = this.value;">
                         {% get_current_language as LANGUAGE_CODE %}
                         {% get_available_languages as languages %}
                         {% for language in languages %}
