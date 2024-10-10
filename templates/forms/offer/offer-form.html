@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +46,8 @@
                 {% endif %}
                 <button type="button" class="btn btn-secondary active" id="signUpBtn">Problems</button>
             </div>
-            <a href="{% url 'home' %}" type="button" class="btn btn-secondary back-home" style="margin-top: 35px;">Home</a>
+            <a href="{% url 'home' %}" type="button" class="btn btn-secondary back-home"
+               style="margin-top: 35px;">Home</a>
             <form id="signUpForm">
                 <h4 class="form-title">Submit a problem</h4>
                 <div class="form-group mt-4">
@@ -55,22 +57,23 @@
                 <div class="form-group mt-2">
                     <label for="problemDescription">Description</label>
                     <textarea class="form-control mt-1" id="problemDescription"
-                              placeholder="Enter problem description" maxlength="2000" ></textarea>
+                              placeholder="Enter problem description" maxlength="2000"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mt-4">Submit</button>
             </form>
             <form id="signInForm" style="display: none;">
-                <h4 class="form-title">Submit a offer</h4>
+                <h4 class="form-title">{% trans 'Submit an offer' %}</h4>
                 <div class="form-group mt-4">
-                    <label for="offerTitle">Title</label>
-                    <input type="text" class="form-control" id="offerTitle" placeholder="Enter offer title">
+                    <label for="offerTitle">{% trans 'Title' %}</label>
+                    <input type="text" class="form-control" id="offerTitle"
+                           placeholder='{% trans 'Enter offer title' %}'>
                 </div>
                 <div class="form-group mt-2">
-                    <label for="offerDescription">Description</label>
+                    <label for="offerDescription">{% trans 'Description' %}</label>
                     <textarea class="form-control" id="offerDescription"
-                              placeholder="Enter offer description" maxlength="2000"></textarea>
+                              placeholder='{% trans 'Enter offer description' %}' maxlength="2000"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                <button type="submit" class="btn btn-primary mt-4">{% trans 'Submit' %}</button>
             </form>
         </div>
     </div>
