@@ -7,4 +7,4 @@ def like_post(request):
         user_id = request.POST.get('user_id')  # Agar foydalanuvchi identifikatori kerak bo'lsa
 
         # Yangi like qo'shish
-        LikeModel.objects.create(post=post_id, user=user_id)
+        LikeModel.objects.create(post=post_id, user=user_id*1)
