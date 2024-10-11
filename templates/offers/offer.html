@@ -80,7 +80,8 @@
                                     {% else %}
                                         {% for like in likes %}
                                             {% if like.post_id == offer.pk %}
-                                                <i class="bi bi-heart">{{ like.likes_count }}</i>
+                                                <i class="bi bi-heart like-button" data-post-id="{{ offer.id }}"
+                                                   data-user-id="{{ offer.user.id }}">{{ like.likes_count }}</i>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -488,5 +489,27 @@
 
 <!-- Local JavaScript -->
 <script src="{% static 'js/all_offers/script.js' %}"></script>
+<script>
+    $(document).on('click', '.like-button', function () {
+        const postId = $(this).data('post-id');
+        const userId = $(this).data('user-id');
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "like_post" %}',
+            data: {
+                post_id: postId,
+                user_id: userId,
+                csrfmiddlewaretoken: '{{ csrf_token }}'  // CSRF token
+            },
+            success: function (response) {
+                alert('Like added for post ID: ' + response.post_id);
+            },
+            error: function (response) {
+                alert('Error adding like.');
+            }
+        });
+    });
+</script>
 </body>
 </html>
