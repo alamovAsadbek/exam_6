@@ -75,7 +75,11 @@
                                     {{ offer.description|truncatechars:100 }}
                                 </div>
                                 <div class="actions">
-                                    <i class="bi bi-heart">{{ offer.likes }}</i>
+                                    {% if likes is None or likes is Null %}
+                                        <i class="bi bi-heart">0</i>
+                                    {% else %}
+                                        <i class="bi bi-heart">5</i>
+                                    {% endif %}
                                     <i class="bi bi-eye">{{ offer.see }}</i>
                                     <i class="bi bi-chat">5</i>
                                 </div>

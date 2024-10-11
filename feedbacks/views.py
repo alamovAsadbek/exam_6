@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
@@ -12,7 +13,7 @@ from .models import FeedbackModel
 def feedbacksView(request):
     problems = FeedbackModel.objects.all().filter(feedback_type='problem')
     offers = FeedbackModel.objects.all().filter(feedback_type='offer').order_by('-created_at')
-    likes = LikeModel.objects.all()
+    likes = LikeModel.objects.values('post_id').annotate(likes_count=Count('id'))
     context = {
         'problems': problems,
         'offers': offers,
