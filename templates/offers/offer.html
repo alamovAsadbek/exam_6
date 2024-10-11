@@ -81,7 +81,7 @@
                                         {% for like in likes %}
                                             {% if like.post_id == offer.pk %}
                                                 <i class="bi bi-heart like-button" data-post-id="{{ offer.id }}"
-                                                   data-user-id="{{ offer.user.id }}">{{ like.likes_count }}</i>
+                                                   data-user-id="{{ offer.user.id }}">{{ like.like_count }}</i>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
