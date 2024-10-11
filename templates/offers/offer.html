@@ -79,8 +79,9 @@
                                         <i class="bi bi-heart">0</i>
                                     {% else %}
                                         {% for like in likes %}
-                                            {% if like.post == offer.pk %}
-                                                <i class="bi bi-heart">{{ like.like_count }}</i>
+{#                                            <h2>{{ like }}</h2>#}
+                                            {% if like.post_id == offer.pk %}
+                                                <i class="bi bi-heart">{{ like.likes_count }}</i>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
