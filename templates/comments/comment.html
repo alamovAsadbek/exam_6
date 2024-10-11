@@ -23,6 +23,14 @@
 
     <!--    js file import-->
     <script src="{% static 'js/comments/comment-manage.js' %}" defer></script>
+    <script>
+        window.onload = function () {
+            const feedback = '{{ feedback }}';
+            if (feedback === 'None' || feedback === '') {
+                window.location.href = "{% url 'error404' %}";
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="app">
@@ -234,14 +242,5 @@
 <script src="{% static 'js/bootstrap/jquery.sticky.js' %}"></script>
 <script src="{% static 'js/bootstrap/click-scroll.js' %}"></script>
 <script src="{% static 'js/bootstrap/custom.js' %}"></script>
-
-<script>
-    window.onload = function () {
-        const feedback = '{{ feedback }}';
-        if (feedback === 'None' || feedback === '') {
-            window.location.href = "{% url 'error404' %}";
-        }
-    }
-</script>
 </body>
 </html>
