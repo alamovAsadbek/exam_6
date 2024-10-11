@@ -173,6 +173,9 @@
             <div class="detail-owner">
                 <div class="detail-owner-avatar">
                     {% trans 'Owner' %} <br><br>
+                    {% if feedback is None or feedback == '' %}
+                        {% url 'home' %}
+                    {% endif %}
                     {% if feedback.user.linkedin_url == None or feedback.user.linkedin_url == '' %}
                         <a href="https://www.linkedin.com/in/alamov-asadbek/" class="follow-me" target="_blank">
                     {% else %}
@@ -231,5 +234,14 @@
 <script src="{% static 'js/bootstrap/jquery.sticky.js' %}"></script>
 <script src="{% static 'js/bootstrap/click-scroll.js' %}"></script>
 <script src="{% static 'js/bootstrap/custom.js' %}"></script>
+
+<script>
+    window.onload = function () {
+        const feedback = '{{ feedback }}';
+        if (feedback === 'None' || feedback === '') {
+            window.location.href = "{% url 'home' %}";
+        }
+    }
+</script>
 </body>
 </html>
