@@ -14,6 +14,7 @@ def feedbacksView(request):
     problems = FeedbackModel.objects.all().filter(feedback_type='problem')
     offers = FeedbackModel.objects.all().filter(feedback_type='offer').order_by('-created_at')
     likes = LikeModel.objects.values('post_id').annotate(likes_count=Count('id'))
+    print(likes)
     context = {
         'problems': problems,
         'offers': offers,
