@@ -190,7 +190,7 @@
             <div class="detail-owner">
                 <div class="detail-owner-avatar">
                     {% trans 'Owner' %} <br><br>
-                    {% if feedback.user.image.url == None or feedback.user.image.url == '' %}
+                    {% if feedback.user.linkedin_url == None or feedback.user.linkedin_url == '' %}
                         <a href="https://www.linkedin.com/in/alamov-asadbek/" class="follow-me" target="_blank">
                     {% else %}
                         <a href="{{ feedback.user.linkedin_url }}" class="follow-me" target="_blank">
