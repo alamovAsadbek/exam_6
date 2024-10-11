@@ -78,7 +78,11 @@
                                     {% if likes is None or likes is Null %}
                                         <i class="bi bi-heart">0</i>
                                     {% else %}
-                                        <i class="bi bi-heart">5</i>
+                                        {% for like in likes %}
+                                            {% if like.post == offer.pk %}
+                                                <i class="bi bi-heart">{{ like.like_count }}</i>
+                                            {% endif %}
+                                        {% endfor %}
                                     {% endif %}
                                     <i class="bi bi-eye">{{ offer.see }}</i>
                                     <i class="bi bi-chat">5</i>
