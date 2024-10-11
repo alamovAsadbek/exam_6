@@ -202,7 +202,7 @@
                              Follow on LinkedIn
                             </span>
                         <span class="developer">
-                            {% if feedback.user.image.url == None %}
+                            {% if feedback.user.image.url == None or feedback.user.image.url == '' %}
                                 <img src="https://i.pinimg.com/736x/6a/d8/6f/6ad86fe68e2f55f29a0bf1a92d26a221.jpg"
                                      alt="404avatar">
                             {% else %}
