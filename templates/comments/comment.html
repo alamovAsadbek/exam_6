@@ -190,8 +190,12 @@
             <div class="detail-owner">
                 <div class="detail-owner-avatar">
                     {% trans 'Owner' %} <br><br>
-                    <a href="{{ feedback.user.linkedin_url }}" class="follow-me" target="_blank">
-                            <span style="color: #9c9cab">
+                    {% if feedback.user.image.url == None or feedback.user.image.url == '' %}
+                        <a href="https://www.linkedin.com/in/alamov-asadbek/" class="follow-me" target="_blank">
+                    {% else %}
+                        <a href="{{ feedback.user.linkedin_url }}" class="follow-me" target="_blank">
+                    {% endif %}
+                    <span style="color: #9c9cab">
                              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
                                   viewBox="0 0 48 48">
                                 <path fill="#0288D1"
@@ -201,7 +205,7 @@
                                 </svg>
                              Follow on LinkedIn
                             </span>
-                        <span class="developer">
+                    <span class="developer">
                             {% if feedback.user.image.url == None or feedback.user.image.url == '' %}
                                 <img src="https://i.pinimg.com/736x/6a/d8/6f/6ad86fe68e2f55f29a0bf1a92d26a221.jpg"
                                      alt="404avatar">
@@ -210,7 +214,7 @@
                                      alt="404avatar"/>
                             {% endif %}
 
-                            {{ feedback.user.full_name }} - {{ feedback.user.email }}
+                        {{ feedback.user.full_name }} - {{ feedback.user.email }}
                     </span>
                     </a>
                 </div>
