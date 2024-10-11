@@ -8,7 +8,6 @@ class FeedbackModel(models.Model):
     description = models.TextField(verbose_name=_('Description'))
     status = models.BooleanField(default=True, verbose_name=_('Status'))
     user = models.ForeignKey('users.UserModel', on_delete=models.CASCADE, null=True, verbose_name=_('User'))
-    likes = models.IntegerField(default=0, verbose_name=_('Likes'))
     see = models.IntegerField(default=0, verbose_name=_('See'))
 
     choices = (
