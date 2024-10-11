@@ -157,3 +157,7 @@ def login_view(request):
 
 def profileView(request):
     pass
+
+
+def error404View(request):
+    return render(request, '404/404.html')

@@ -13,5 +13,6 @@ urlpatterns = [
     path('feedbacks/<int:pk>/', feedbackDetailView, name='feedback_detail'),
     path('comments/', commentsView, name='create_comment'),
     path('profile', profileView, name='profile'),
-    path('verify-email/<uidb64>/<token>/', verify_email, name='verify_email')
+    path('verify-email/<uidb64>/<token>/', verify_email, name='verify_email'),
+    path('404', error404View, name='error404')
 ]
