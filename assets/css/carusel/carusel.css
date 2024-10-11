@@ -36,3 +36,8 @@
         transform: translateX(calc(var(--slideWidth) * var(--totSlides) * -1));
     }
 }
+
+.comment-btn {
+    background-color: #ffffff !important;
+    border: none !important;
+}
