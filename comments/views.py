@@ -31,6 +31,12 @@ def commentDetailView(request, pk):
             comment.user = request.user
             comment.feedback = FeedbackModel.objects.get(pk=pk)
             comment.save()
+            comments = CommentModel.objects.filter(feedback=pk)
+            feedback = FeedbackModel.objects.get(pk=pk)
+            context = {
+                'feedback': feedback,
+                'comments': comments
+            }
             return render(request, 'comments/comment.html', {'comment': comment})
     else:
         return render(request, 'offers/offer.html')
