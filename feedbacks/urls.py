@@ -1,6 +1,6 @@
 from django.urls import path
 
-from likes.views import like_post
+from likes.views import like_post, LikeView, UnlikeView
 from users.views import login_view, logoutView, register_view, verify_email, profileView, error404View
 from .views import *
 
