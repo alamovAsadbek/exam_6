@@ -1,6 +1,6 @@
 from django.urls import path
 
-from likes.views import like_post, LikeView, UnlikeView
+from likes.views import LikeView, UnlikeView
 from users.views import login_view, logoutView, register_view, verify_email, profileView, error404View
 from .views import *
 
@@ -16,7 +16,6 @@ urlpatterns = [
     path('profile', profileView, name='profile'),
     path('verify-email/<uidb64>/<token>/', verify_email, name='verify_email'),
     path('404', error404View, name='error404'),
-    path('like-post/', like_post, name='like_post'),
 
     # for likes
     path('api/like/', LikeView.as_view(), name='like'),
