@@ -17,4 +17,8 @@ urlpatterns = [
     path('verify-email/<uidb64>/<token>/', verify_email, name='verify_email'),
     path('404', error404View, name='error404'),
     path('like-post/', like_post, name='like_post'),
+
+    # for likes
+    path('api/like/', LikeView.as_view(), name='like'),
+    path('api/unlike/', UnlikeView.as_view(), name='unlike'),
 ]

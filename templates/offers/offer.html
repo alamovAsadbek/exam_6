@@ -114,7 +114,7 @@
                         <div class="card-text">
                             <div class="title-total">
                                 <div class="title">{{ demand.created_at }}</div>
-                                <a href='#'>{{ demand.title }}</a>
+                                <a href='{% url 'feedback_detail' demand.pk %}'>{{ demand.title }}</a>
 
                                 <div class="desc">
                                     {{ demand.description|truncatechars:100 }}
@@ -499,24 +499,33 @@
 <!-- Local JavaScript -->
 <script src="{% static 'js/all_offers/script.js' %}"></script>
 <script>
-    $(document).on('click', '.like-button', function () {
-        const postId = $(this).data('post-id');
-        const userId = $(this).data('user-id');
+    document.addEventListener('DOMContentLoaded', function () {
+        const likeButtons = document.querySelectorAll('.like-button');
 
-        $.ajax({
-            type: 'POST',
-            url: '{% url "like_post" %}',
-            data: {
-                post_id: postId,
-                user_id: userId,
-                csrfmiddlewaretoken: '{{ csrf_token }}'  // CSRF token
-            },
-            success: function (response) {
-                alert('Like added for post ID: ' + response.post_id);
-            },
-            error: function (response) {
-                alert('Error adding like.');
-            }
+        likeButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const postId = this.getAttribute('data-post-id');
+                const userId = this.getAttribute('data-user-id');
+                const isLiked = this.classList.contains('liked');
+
+                const url = isLiked ? '/api/unlike/' : '/api/like/'; // Ustki URL-lar sizning Django url-laringiz
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}' // CSRF token qo'shing
+                    },
+                    body: JSON.stringify({post_id: postId, user_id: userId})
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            this.classList.toggle('liked');
+                            this.innerText = isLiked ? '0' : data.new_like_count; // Yangi sonini ko'rsatish
+                        }
+                    });
+            });
         });
     });
 </script>
