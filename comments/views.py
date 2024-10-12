@@ -12,7 +12,7 @@ def createCommentView(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.user = request.user
+            comment.user.pk = 30
             comment.feedback = FeedbackModel.objects.get(pk=pk)
             comment.save()
             comments = CommentModel.objects.filter(feedback=pk)
