@@ -58,13 +58,4 @@ def offerFormView(request):
         return render(request, 'forms/offer/offer-form.html')
 
 
-def feedbackDetailView(request, pk):
-    feedback = FeedbackModel.objects.get(pk=pk)
-    feedback.see += 1
-    feedback.save()
-    comments = CommentModel.objects.filter(feedback=feedback)
-    context = {
-        'feedback': feedback,
-        'comments': comments
-    }
-    return render(request, 'comments/comment.html', context)
+
