@@ -16,7 +16,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
-            user.is_active = False  # Foydalanuvchini dastlab faollashtirmang
+            user.is_active = False
             user.save()
             return redirect(reverse_lazy('login'))
         else:
