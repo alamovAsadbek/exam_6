@@ -1,8 +1,8 @@
-from django.contrib import auth
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import AbstractUser
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 
 class UserModel(AbstractUser):
@@ -11,13 +11,15 @@ class UserModel(AbstractUser):
     email = models.EmailField(max_length=100, verbose_name=_('Email'), unique=True)
     is_active = models.BooleanField(default=False, verbose_name=_('Status'))
     image = models.ImageField(upload_to='team_avatars/', verbose_name=_('Profile Image'), null=True, blank=True)
-    password = models.CharField(max_length=100, verbose_name=_('Password'))
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created At'))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
 
+    USERNAME_FIELD = 'email'  # Email ni asosiy identifikator sifatida belgilaymiz
+    REQUIRED_FIELDS = ['full_name', 'email']  # Ro'yxatdan o'tishda talab qilinadigan maydonlar
+
     def set_password(self, raw_password):
-        self.password = make_password(raw_password)
+        super().set_password(raw_password)  # Django'ning ichki mexanizmini ishlatish
 
     def __str__(self):
         return self.full_name
