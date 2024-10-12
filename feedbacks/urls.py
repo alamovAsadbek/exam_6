@@ -13,6 +13,7 @@ urlpatterns = [
     path('feedbacks', feedbacksView, name='feedbacks'),
     path('feedbacks/create', offerFormView, name='create_feedback'),
     path('feedbacks/<int:pk>/', createCommentView, name='feedback_detail'),
+    path('comments/<int:pk>/<int:user_id>/', createCommentView, name='comment_detail'),
     path('comments/', commentsView, name='create_comment'),
     path('profile', profileView, name='profile'),
     path('verify-email/<uidb64>/<token>/', verify_email, name='verify_email'),
