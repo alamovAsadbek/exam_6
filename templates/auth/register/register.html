@@ -99,16 +99,6 @@
                                             <i class="custom-form-icon bi-person"></i>
                                         </span>
                             </div>
-                            <div class="input-group mb-3">
-                                <input type="password" name="confirm_password" id="confirm_password"
-                                       class="form-control register-form-input"
-                                       aria-label="confirm_password" aria-describedby="basic-addon1"
-                                       placeholder="Confirm Password" required>
-
-                                <span class="input-group-text" id="basic-addon3">
-                                            <i class="custom-form-icon bi-person"></i>
-                                        </span>
-                            </div>
                             <div class="col-lg-8 col-md-10 col-8 mx-auto mb-2">
                                 <button type="submit" class="form-control" style="text-align: center" id="submitBtn">
                                     Register
@@ -132,32 +122,6 @@
 <!--SCRIPT-->
 <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
         type="module"></script>
-
-<script>
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirm_password');
-    const submitBtn = document.getElementById('submitBtn');
-    const errorMessage = document.getElementById('error-message');
-
-    function validatePasswords() {
-        if (passwordInput.value === confirmPasswordInput.value) {
-            submitBtn.disabled = false;
-            errorMessage.textContent = '';
-            submitBtn.style.cursor = 'pointer';
-            submitBtn.title = '';
-        } else {
-            submitBtn.disabled = true;
-            errorMessage.textContent = 'Passwords do not match.';
-            errorMessage.textContent = '';
-            submitBtn.disabled = true;
-            submitBtn.style.cursor = 'not-allowed';
-            submitBtn.title = 'Passwords do not match.';
-        }
-    }
-
-    passwordInput.addEventListener('input', validatePasswords);
-    confirmPasswordInput.addEventListener('input', validatePasswords);
-</script>
 
 <!--SCRIPT-->
 </body>
