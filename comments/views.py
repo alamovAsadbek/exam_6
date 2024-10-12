@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def createCommentView(request):
+    return render(request, 'comments/comment.html')
