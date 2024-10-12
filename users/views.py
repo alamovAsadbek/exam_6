@@ -2,7 +2,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from users.forms import UserRegisterForm, UserLoginForm
+from users.forms import UserRegisterForm
 
 
 def logoutView(request):
@@ -29,19 +29,18 @@ def register_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        form = UserLoginForm(request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            user = authenticate(request=request, email=email, password=password)
+            user = authenticate(username=email, password=password)
             if user is not None:
+                # Foydalanuvchini tizimga kiritish
                 login(request, user)
-                print(request.user)
-                return redirect("feedbacks")
-            else:
-                return render(request, template_name='auth/login/login.html')
+                return redirect('home')  # O'zingizga kerakli sahifaga yo'naltiring
     else:
-        return render(request, 'auth/login/login.html')
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 
 def profileView(request):
