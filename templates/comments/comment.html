@@ -185,7 +185,7 @@
 
             <div class="chat-area-footer">
                 <form style="width: 100%; display: flex; justify-content: space-between;"
-                      action="{% url 'feedback_detail' feedback.id %}" method="post">
+                      action="{% url 'create_comment' feedback.id %}" method="post">
                     {% csrf_token %}
                     <input type="text" name="text" placeholder="Type something here..."/>
                     <button type="submit" class="comment-btn"
