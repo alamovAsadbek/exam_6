@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 
 from django.contrib.auth.models import AbstractUser
+
+from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -16,7 +18,23 @@ class UserModel(AbstractUser):
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
 
     USERNAME_FIELD = 'email'  # Email ni asosiy identifikator sifatida belgilaymiz
-    REQUIRED_FIELDS = ['full_name', 'email']  # Ro'yxatdan o'tishda talab qilinadigan maydonlar
+    REQUIRED_FIELDS = ['full_name']  # Ro'yxatdan o'tishda talab qilinadigan maydonlar
+
+    groups = models.ManyToManyField(
+        Group,
+        related_name='custom_user_set',  # O'zgartiring
+        blank=True,
+        help_text=_('Guruhlar.'),
+        verbose_name=_('Guruhlar')
+    )
+
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name='custom_user_permissions_set',  # O'zgartiring
+        blank=True,
+        help_text=_('Foydalanuvchilarga berilgan ruxsatlar.'),
+        verbose_name=_('Ruxsatlar')
+    )
 
     def set_password(self, raw_password):
         super().set_password(raw_password)  # Django'ning ichki mexanizmini ishlatish
