@@ -6,7 +6,7 @@ from feedbacks.models import FeedbackModel
 
 def createCommentView(request, pk):
     if request.method == 'POST':
-        pass
+        print(request.POST)
     elif request.method == 'GET':
         feedback = FeedbackModel.objects.get(pk=pk)
         feedback.see += 1
