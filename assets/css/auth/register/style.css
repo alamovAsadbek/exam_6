@@ -7,7 +7,7 @@
     position: absolute;
     top: 10%;
     right: 20%;
-    padding: 25px 30px;
+    padding: 15px 30px;
 }
 
 .main-logo {
@@ -30,7 +30,7 @@
 }
 
 .register-form-input {
-    font-size: 14px !important;
+    font-size: 10px !important;
 }
 
 @media screen and (max-width: 780px) {
