@@ -121,12 +121,13 @@
                                 </div>
                                 <div class="actions">
                                     {% if likes is None or likes is Null or likes|length == 0 %}
-                                        <i class="bi bi-heart">0</i>
+                                        <i class="bi bi-heart like-button" data-post-id="{{ demand.id }}"
+                                           data-user-id="{{ demand.user.id }}">0</i>
                                     {% else %}
                                         {% for like in likes %}
-                                            {% if like.post_id == offer.pk %}
-                                                <i class="bi bi-heart like-button" data-post-id="{{ offer.id }}"
-                                                   data-user-id="{{ offer.user.id }}">{{ like.like_count }}</i>
+                                            {% if like.post_id == demand.pk %}
+                                                <i class="bi bi-heart like-button" data-post-id="{{ demand.id }}"
+                                                   data-user-id="{{ demand.user.id }}">0</i>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
