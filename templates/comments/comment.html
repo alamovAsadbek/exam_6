@@ -207,8 +207,11 @@
                                 <img src="{{ feedback.user.image.url }}"
                                      alt="404avatar"/>
                             {% endif %}
-
-                        {{ feedback.user.full_name }} - {{ feedback.user.email }}
+                        {% if feedback.user.full_name == None or feedback.user.full_name == '' %}
+                            Unknown
+                        {% else %}
+                            {{ feedback.user.full_name }} - {{ feedback.user.email }}
+                        {% endif %}
                     </span>
                     </a>
                 </div>
