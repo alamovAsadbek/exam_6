@@ -13,6 +13,7 @@ class UserModel(AbstractUser):
     is_active = models.BooleanField(default=False, verbose_name=_('Status'))
     image = models.ImageField(upload_to='team_avatars/', verbose_name=_('Profile Image'), null=True, blank=True)
     username = models.CharField(max_length=100, verbose_name=_('Username'), unique=True)
+    
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created At'))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
 
