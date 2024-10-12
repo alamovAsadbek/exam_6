@@ -5,12 +5,17 @@ from feedbacks.models import FeedbackModel
 
 
 def createCommentView(request, pk):
-    feedback = FeedbackModel.objects.get(pk=pk)
-    feedback.see += 1
-    feedback.save()
-    comments = CommentModel.objects.filter(feedback=feedback)
-    context = {
-        'feedback': feedback,
-        'comments': comments
-    }
-    return render(request, 'comments/comment.html', context)
+    if request.method == 'POST':
+        pass
+    elif request.method == 'GET':
+        feedback = FeedbackModel.objects.get(pk=pk)
+        feedback.see += 1
+        feedback.save()
+        comments = CommentModel.objects.filter(feedback=feedback)
+        context = {
+            'feedback': feedback,
+            'comments': comments
+        }
+        return render(request, 'comments/comment.html', context)
+    else:
+        return render(request, '404/404.html')
