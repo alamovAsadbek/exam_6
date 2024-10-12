@@ -12,6 +12,7 @@ def createCommentView(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
+            form.cleaned_data['user'] = request.user
             comment.user = request.user
             print(form.cleaned_data)
             form.save()
@@ -30,5 +31,4 @@ def createCommentView(request, pk):
             return render(request, 'comments/comment.html', context)
         except FeedbackModel.DoesNotExist:
             return render(request, '404/404.html')
-    else:
-        return render(request, '404/404.html')
+    return render(request, '404/404.html')
