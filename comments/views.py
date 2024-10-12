@@ -23,7 +23,7 @@ def createCommentView(request, pk):
 
 
 @login_required
-def commentDetailView(request, pk, user_id):
+def commentDetailView(request, pk):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -31,6 +31,6 @@ def commentDetailView(request, pk, user_id):
             comment.user = request.user
             comment.feedback = FeedbackModel.objects.get(pk=pk)
             comment.save()
-            return render(request, 'comments/comment_detail.html', {'comment': comment})
+            return render(request, 'comments/comment.html', {'comment': comment})
     else:
         return render(request, 'offers/offer.html')
