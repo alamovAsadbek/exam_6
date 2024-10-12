@@ -1,9 +1,11 @@
+from django.contrib import auth
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext as _
 
 
-class UserModel(models.Model):
+class UserModel(AbstractUser):
     full_name = models.CharField(max_length=100, verbose_name=_('Full Name'))
     linkedin_url = models.URLField(max_length=200, verbose_name=_('LinkedIn URL'), null=True, blank=True)
     email = models.EmailField(max_length=100, verbose_name=_('Email'), unique=True)
