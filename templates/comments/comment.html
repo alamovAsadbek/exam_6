@@ -175,7 +175,7 @@
                       action="{% url 'feedback_detail' feedback.id %}" method="post">
                     {% csrf_token %}
                     <input type="text" placeholder="Type something here..."/>
-                    <button type="button" class="comment-btn"
+                    <button type="submit" class="comment-btn"
                             style="background-color: #ffffff; border: none; &:hover{background-color: #125393; color: #ffffff;}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#E76F51"
                              class="bi bi-send-check-fill" viewBox="0 0 16 16">

@@ -9,9 +9,7 @@ def createCommentView(request, pk):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.feedback = FeedbackModel.objects.get(pk=pk)
-            comment.save()
+            form.save()
             return redirect('create_comment', pk=pk)
     elif request.method == 'GET':
         feedback = FeedbackModel.objects.get(pk=pk)
