@@ -37,7 +37,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 print(request.user)
-                return redirect("/")
+                return redirect("feedbacks")
             else:
                 return render(request, template_name='auth/login/login.html')
     else:
