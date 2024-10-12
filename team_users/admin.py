@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 
-from team_users.models import TeamUserModel
+from .models import TeamUserModel
 
 
 @admin.register(TeamUserModel)
