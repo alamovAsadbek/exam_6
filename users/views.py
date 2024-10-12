@@ -1,8 +1,9 @@
-from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth import logout, login
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
 from users.forms import UserRegisterForm, UserLoginForm
+from users.models import UserModel
 
 
 def logoutView(request):
@@ -32,7 +33,8 @@ def login_view(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            user = authenticate(username=email, password=password)
+            user = UserModel.objects.filter(email=email).first()
+            print(user)
             if user is not None:
                 login(request, user)
                 return redirect('feedbacks')
