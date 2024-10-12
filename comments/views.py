@@ -40,3 +40,4 @@ def commentDetailView(request, pk):
             return render(request, 'comments/comment.html', {'comment': comment})
     else:
         return render(request, 'offers/offer.html')
+    return render(request, '404/404.html')
