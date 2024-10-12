@@ -173,6 +173,7 @@
             <div class="chat-area-footer">
                 <form style="width: 100%; display: flex; justify-content: space-between;"
                       action="{% url 'feedback_detail' feedback.id %}" method="post">
+                    {% csrf_token %}
                     <input type="text" placeholder="Type something here..."/>
                     <button type="button" class="comment-btn"
                             style="background-color: #ffffff; border: none; &:hover{background-color: #125393; color: #ffffff;}">
