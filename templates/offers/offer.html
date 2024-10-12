@@ -509,7 +509,7 @@
                 const userId = this.getAttribute('data-user-id');
                 const isLiked = this.classList.contains('liked');
 
-                const url = isLiked ? '/api/unlike/' : '/api/like/'; // Ustki URL-lar sizning Django url-laringiz
+                const url = isLiked ? '/api/unlike/' : '/api/like/'; // URL-larni o'zgartiring
 
                 fetch(url, {
                     method: 'POST',
@@ -523,7 +523,8 @@
                     .then(data => {
                         if (data.success) {
                             this.classList.toggle('liked');
-                            this.innerText = isLiked ? '0' : data.new_like_count; // Yangi sonini ko'rsatish
+                            const newCount = isLiked ? parseInt(this.innerText) - 1 : parseInt(this.innerText) + 1;
+                            this.innerText = newCount; // Yangi sonini ko'rsatish
                         }
                     });
             });
