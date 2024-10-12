@@ -45,3 +45,8 @@ class UserModel(AbstractUser):
     class Meta:
         verbose_name = _('User')
         verbose_name_plural = _('Users')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._meta.get_field('last_login').remote_field.model._meta.local_fields.remove(
+            self._meta.get_field('last_login'))

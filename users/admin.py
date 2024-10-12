@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
-from users.models import UserModel
+from .models import UserModel
 
 
 @admin.register(UserModel)
