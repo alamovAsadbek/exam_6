@@ -6,4 +6,4 @@ from .models import CommentModel
 class CommentForm(forms.ModelForm):
     class Meta:
         model = CommentModel
-        fields = ['text']
+        fields = ['text', 'feedback', 'user']
