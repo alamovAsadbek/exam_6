@@ -22,7 +22,7 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class UserModel(AbstractBaseUser):
+class UserModel(AbstractUser):
     full_name = models.CharField(max_length=100, verbose_name=_('Full Name'))
     linkedin_url = models.URLField(max_length=200, verbose_name=_('LinkedIn URL'), null=True, blank=True)
     email = models.EmailField(max_length=100, verbose_name=_('Email'), unique=True)
@@ -31,11 +31,6 @@ class UserModel(AbstractBaseUser):
     username = models.CharField(max_length=100, verbose_name=_('Username'), unique=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created At'))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
-
-    USERNAME_FIELD = 'email'  # Email ni asosiy identifikator sifatida belgilaymiz
-    REQUIRED_FIELDS = ['full_name']  # Ro'yxatdan o'tishda talab qilinadigan maydonlar
-
-    objects = CustomUserManager()
 
     def __str__(self):
         return self.full_name
