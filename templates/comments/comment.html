@@ -44,8 +44,14 @@
             </a>
         </div>
         <div class="user-settings">
-            <img class="user-profile" src="{% static 'files/images/participants_images/alamov_asadbek.jpg' %}"
-                 alt="404" class="account-profile" alt="404">
+            {% if request.user.image.url == None or request.user.image.url == '' %}
+                <img class="user-profile" src="https://i.pinimg.com/736x/6a/d8/6f/6ad86fe68e2f55f29a0bf1a92d26a221.jpg"
+                     alt="404" class="account-profile" alt="404">
+            {% else %}
+                <img src="{{ request.user.image.url }}"
+                     alt="404avatar"/>
+            {% endif %}
+
         </div>
     </div>
     <div class="wrapper">
