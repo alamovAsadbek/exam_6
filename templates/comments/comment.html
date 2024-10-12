@@ -50,8 +50,10 @@
     </div>
     <div class="wrapper">
         <div class="chat-area">
-            {% if comments == None or comments == '' %}
-                <h2>No comments yet</h2>
+            {% if comments == None or comments == '' or comments|length == 0 %}
+                <div class="chat-area-main">
+                    <h4 style="text-align: center;">{% trans 'No comments yet' %}</h4>
+                </div>
             {% else %}
                 <div class="chat-area-header">
                     <div class="chat-area-title">{% trans 'Who wrote a comment' %}</div>

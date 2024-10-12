@@ -19,6 +19,7 @@ def createCommentView(request, pk):
         feedback.see += 1
         feedback.save()
         comments = CommentModel.objects.filter(feedback=feedback)
+        print(comments)
         context = {
             'feedback': feedback,
             'comments': comments
