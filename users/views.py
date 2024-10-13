@@ -76,6 +76,7 @@ def login_view(request):
     error_message = None
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
+        print(form)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
