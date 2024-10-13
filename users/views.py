@@ -114,7 +114,7 @@ def update_profile_view(request, pk):
             location = form.cleaned_data['location']
             organization = form.cleaned_data['organization_name']
             linkedin_url = form.cleaned_data['linkedin_url']
-            image = form.cleaned_data['image']
+            image = form.cleaned_data['avatar']
             if first_name is None:
                 first_name = user.first_name
             if last_name is None:
