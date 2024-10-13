@@ -6,5 +6,6 @@ from .models import UserModel
 
 @admin.register(UserModel)
 class UserModelAdmin(TranslationAdmin):
-    list_display = ('id', 'full_name', 'username', 'is_active',)
-    list_display_links = ('id', 'full_name', 'username', 'is_active',)
+    list_display = ('id', 'first_name', 'last_name', 'username',)
+    list_display_links = ('id', 'first_name', 'last_name', 'username',)
+    search_fields = ('first_name', 'last_name', 'username',)
