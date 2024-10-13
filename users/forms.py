@@ -13,6 +13,7 @@ class UserRegisterForm(forms.ModelForm):
         fields = ['full_name', 'username', 'email', 'password']
 
     def save(self, commit=True):
+        print(self.cleaned_data)
         user = super().save(commit=False)
         user.password = make_password(self.cleaned_data['password'])
         if commit:

@@ -56,6 +56,7 @@ def send_email_verification(request, user):
 
 def register_view(request):
     if request.method == 'POST':
+        print(request.POST)
         form = UserRegisterForm(request.POST)
         print(request.POST)
         if form.is_valid():
