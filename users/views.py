@@ -98,7 +98,10 @@ def login_view(request):
 
 
 def profile_view(request):
-    return render(request, 'profile/profile.html')
+    if not request.user.is_authenticated:
+        return redirect('login')
+    user = request.user
+    return render(request, 'profile/profile.html', {'user': user})
 
 
 def error_404_view(request):
