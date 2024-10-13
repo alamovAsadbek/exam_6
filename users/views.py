@@ -9,7 +9,7 @@ from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from users.forms import RegisterForm, LoginForm
+from users.forms import RegisterForm, LoginForm, EditProfileForm
 from users.models import ProfileModel
 from users.token import email_token_generator
 
@@ -101,6 +101,43 @@ def profile_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
     user = request.user
+    return render(request, 'profile/profile.html', {'user': user})
+
+
+def update_profile_view(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    user = request.user
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=user)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            location = form.cleaned_data['location']
+            organization = form.cleaned_data['organization_name']
+            linkedin_url = form.cleaned_data['linkedin_url']
+            if first_name is None:
+                first_name = user.first_name
+            if last_name is None:
+                last_name = user.last_name
+            if location is None:
+                location = user.profile.location
+            if organization is None:
+                organization = user.profile.organization_name
+            if linkedin_url is None:
+                linkedin_url = user.profile.linkedin_url
+            user.first_name = first_name
+            user.last_name = last_name
+            user.save()
+            user.profile.location = location
+            user.profile.organization_name = organization
+            user.profile.linkedin_url = linkedin_url
+            user.profile.save()
+            return redirect('profile')
+        else:
+            errors = form.errors
+            return render(request, 'profile/profile.html',
+                          {"form": form, "errors": errors})
     return render(request, 'profile/profile.html', {'user': user})
 
 
