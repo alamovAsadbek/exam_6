@@ -93,7 +93,7 @@ def login_view(request):
                 error_message = "Username yoki parol noto'g'ri"
         else:
             error_message = "Formada xato mavjud"
-
+    print(error_message)
     return render(request, 'auth/login/login.html', {'error': error_message})
 
 
