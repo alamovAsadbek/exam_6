@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from comments.forms import CommentForm
 from comments.models import CommentModel
@@ -12,16 +12,9 @@ def createCommentView(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.user.pk = 30
-            comment.feedback = FeedbackModel.objects.get(pk=pk)
+            comment.user = request.user
             comment.save()
-            comments = CommentModel.objects.filter(feedback=pk)
-            feedback = FeedbackModel.objects.get(pk=pk)
-            context = {
-                'feedback': feedback,
-                'comments': comments
-            }
-            return render(request, 'comments/comment.html', {'comment': context})
+            return redirect('feedback_detail', pk=pk)
     else:
         try:
             feedback = FeedbackModel.objects.get(pk=pk)
