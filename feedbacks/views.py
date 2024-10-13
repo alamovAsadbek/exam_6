@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
@@ -32,12 +33,15 @@ def commentsView(request):
     return render(request, 'comments/comment.html')
 
 
+@login_required
 def offerFormView(request):
     if request.method == 'POST':
         print(request.POST)
         keys = request.POST.keys()
         second_key = list(keys)[4]
         form = FeedbackOfferForm(request.POST)
+        user = request.user
+        form.cleaned_data['user'] = user
         if second_key == 'problemForm':
             form = FeedbackProblemForm(request.POST)
         if form.is_valid():
