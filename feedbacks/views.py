@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from comments.models import CommentModel
 from frequently_questions.models import FrequentlyQuestionsModel
 from team_users.models import TeamUserModel
 from .forms import FeedbackRequestForm
@@ -27,7 +26,8 @@ def landingPageView(request):
     team_members = TeamUserModel.objects.all()
     context = {
         'all_frequently_asked_questions': all_frequently_asked_questions,
-        'team_members': team_members
+        'team_members': team_members,
+        'best_offers': FeedbackModel.objects.all().filter(feedback_type='offer').order_by('-see')[:6],
     }
     return render(request, 'index/index.html', context)
 
