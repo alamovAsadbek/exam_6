@@ -66,14 +66,9 @@
                     <div class="chat-area-title">{% trans 'Who wrote a comment' %}</div>
                     <div class="chat-area-group">
                         {% for comment in comments %}
-                            {% if forloop.counter <= 3 %}
-                                <img class="chat-area-profile"
-                                     src="{{ comment.user.image.url }}"
-                                     alt=""/>
-                            {% else %}
-                                <span>+{{ comments|length|add:'-3' }}</span>
-                                {% break %}
-                            {% endif %}
+                            <img class="chat-area-profile"
+                                 src="{{ comment.user.image.url }}"
+                                 alt="{{ comment.user.username }}"/>
                         {% endfor %}
                     </div>
                 </div>
@@ -104,8 +99,7 @@
                             <div class="chat-msg-date">Message seen 1.22pm</div>
                         </div>
                         <div class="chat-msg-content">
-                            <div class="chat-msg-text">Sit amet risus nullam eget felis eget. Dolor sed viverra
-                                ipsum😂😂😂
+                            <div class="chat-msg-text">Asadbek
                             </div>
                             <div class="chat-msg-text">Cras mollis nec arcu malesuada tincidunt.</div>
                         </div>
