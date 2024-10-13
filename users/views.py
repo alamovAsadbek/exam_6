@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
@@ -82,6 +82,7 @@ def login_view(request):
             user = UserModel.objects.filter(username=username, password=password).first()
             print(user)
             if user is not None:
+                user = authenticate(request=request, username=username, password=password)
                 login(request, user)
                 return redirect('home')
             else:
