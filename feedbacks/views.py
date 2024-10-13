@@ -56,5 +56,4 @@ def offerFormView(request):
                 return render(request, 'offers/offer.html', {'errors': errors})
         else:
             return redirect('error404')
-    else:
-        return render(request, 'forms/offer/offer-form.html')
+    return render(request, 'forms/offer/offer-form.html')
