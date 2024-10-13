@@ -3,7 +3,7 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes, force_str
@@ -105,9 +105,9 @@ def profile_view(request):
 
 
 def update_profile_view(request, pk):
-    user = User.objects.filter(pk=pk).first()
+    user = get_object_or_404(User, pk=pk)
     if request.method == 'POST':
-        form = EditProfileForm(request.POST, instance=user)
+        form = EditProfileForm(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
