@@ -104,10 +104,8 @@ def profile_view(request):
     return render(request, 'profile/profile.html', {'user': user})
 
 
-def update_profile_view(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
-    user = ProfileModel.objects.get(pk=request.user.pk)
+def update_profile_view(request, pk):
+    user = User.objects.filter(pk=pk).first()
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=user)
         if form.is_valid():

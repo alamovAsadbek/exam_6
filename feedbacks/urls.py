@@ -16,6 +16,6 @@ urlpatterns = [
     path('comments/', commentsView, name='create_comment'),
     path('verify-email/<uidb64>/<token>/', verify_email, name='verify-email'),
     path('profile', profile_view, name='profile'),
-    path('profile/edit', update_profile_view, name='edit_profile'),
+    path('profile/edit/<int:pk>/', update_profile_view, name='edit_profile'),
     path('404', error_404_view, name='error404'),
 ]
