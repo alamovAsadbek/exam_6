@@ -1,7 +1,9 @@
 from django.conf import settings
+from django.contrib.auth import login
 from django.contrib.auth import logout, authenticate
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
+from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes, force_str
@@ -70,10 +72,6 @@ def register_view(request):
     return render(request, 'auth/register/register.html', {"form": form})
 
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-
-
 def login_view(request):
     error_message = None
     if request.method == 'POST':
@@ -92,7 +90,7 @@ def login_view(request):
     else:
         form = UserLoginForm()
 
-    return render(request, 'auth/login.html', {'form': form, 'error': error_message})
+    return render(request, 'auth/login/login.html', {'form': form, 'error': error_message})
 
 
 def profileView(request):
