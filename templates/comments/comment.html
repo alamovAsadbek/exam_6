@@ -167,13 +167,13 @@
                             </span>
                     <span class="developer">
                             {% if feedback.user.image.url == None or feedback.user.image.url == '' %}
-                                <img src="https://i.pinimg.com/736x/6a/d8/6f/6ad86fe68e2f55f29a0bf1a92d26a221.jpg"
+                                <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1369675164.1728777600&semt=ais_hybrid"
                                      alt="404avatar">
                             {% else %}
                                 <img src="{{ feedback.user.image.url }}"
                                      alt="404avatar"/>
                             {% endif %}
-                        {{ feedback.user.first_name }} {{ feedback.user.last_name }} - {{ feedback.user.email }}
+                        {{ feedback.user.first_name }} {{ feedback.user.last_name }}
                     </span>
                     </a>
                 </div>
