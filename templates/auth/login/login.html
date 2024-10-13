@@ -25,7 +25,7 @@
 
 <body>
 {#modal#}
-{% if error != None or error != '' %}
+{% if error != None or error != '' or error != 'None' or error|length > 0 %}
     <div class="alert alert-danger" role="alert" style="font-size: 14px;">
         {{ error }}
     </div>
