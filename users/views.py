@@ -114,7 +114,7 @@ def update_profile_view(request, pk):
             location = form.cleaned_data['location']
             organization = form.cleaned_data['organization_name']
             linkedin_url = form.cleaned_data['linkedin_url']
-            image = form.cleaned_data['avatar']
+            avatar = form.cleaned_data['avatar']
             if first_name is None:
                 first_name = user.first_name
             if last_name is None:
@@ -125,9 +125,9 @@ def update_profile_view(request, pk):
                 organization = user.profile.organization_name
             if linkedin_url is None:
                 linkedin_url = user.profile.linkedin_url
-            if image is None:
-                image = user.profile.image
-            user.profile.image = image
+            if avatar is None:
+                avatar = user.profile.avatar
+            user.profile.avatar = avatar
             user.first_name = first_name
             user.last_name = last_name
             user.save()
