@@ -77,13 +77,14 @@
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstName">First name</label>
                                 <input class="form-control" id="inputFirstName" type="text"
-                                       placeholder="Enter your first name" value="{{ user.first_name }}">
+                                       placeholder="Enter your first name" name="first_name"
+                                       value="{{ user.first_name }}">
                             </div>
                             <!-- Form Group (last name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastName">Last name</label>
                                 <input class="form-control" id="inputLastName" type="text"
-                                       placeholder="Enter your last name" value="{{ user.last_name }}">
+                                       placeholder="Enter your last name" name="last_name" value="{{ user.last_name }}">
                             </div>
                         </div>
                         <!-- Form Row        -->
@@ -92,28 +93,29 @@
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputOrgName">Organization name</label>
                                 <input class="form-control" id="inputOrgName" type="text"
-                                       placeholder="Enter your organization name" value="{{ user.organization_name }}">
+                                       placeholder="Enter your organization name" name="organization_name"
+                                       value="{{ user.organization_name }}">
                             </div>
 
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLocation">Location</label>
                                 <input class="form-control" id="inputLocation" type="text"
-                                       placeholder="Enter your location" value="{{ user.location }}">
+                                       placeholder="Enter your location" name="location" value="{{ user.location }}">
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email"
-                                   placeholder="Enter your email address" value="name@example.com" readonly
+                            <input class="form-control" name="email" id="inputEmailAddress" type="email"
+                                   placeholder="Enter your email address" value="{{ user.email }}" readonly
                                    style="cursor: not-allowed;">
                         </div>
                         <!-- Linkedin profile link-->
                         <div class="mb-3">
                             <label class="small mb-1" for="linkedinProfileLink">Linkedin profile link</label>
-                            <input class="form-control" id="linkedinProfileLink" type="email"
+                            <input class="form-control" id="linkedinProfileLink" type="url"
                                    placeholder="Enter your Linkedin profile link"
-                                   value="https://www.linkedin.com/in/valerie-luna-123456789">
+                                   value="{{ user.linkedin_link }}" name="linkedin_url">
                         </div>
                         <!-- Save changes button-->
                         <button class="btn" type="button">Save changes</button>
