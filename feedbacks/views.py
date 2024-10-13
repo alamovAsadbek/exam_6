@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 
 from frequently_questions.models import FrequentlyQuestionsModel
 from team_users.models import TeamUserModel
@@ -33,7 +34,7 @@ def commentsView(request):
     return render(request, 'comments/comment.html')
 
 
-@login_required
+@method_decorator(login_required, name='dispatch')
 def offerFormView(request):
     if request.method == 'POST':
         form = FeedbackOfferForm(request.POST)
