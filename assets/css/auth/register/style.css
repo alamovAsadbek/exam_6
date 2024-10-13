@@ -5,7 +5,7 @@
     border-radius: 8px;
     margin: auto;
     position: absolute;
-    top: 5%;
+    top: 10%;
     right: 20%;
     padding: 15px 30px;
 }
@@ -30,7 +30,7 @@
 }
 
 .register-form-input {
-    font-size: 10px !important;
+    font-size: 14px !important;
 }
 
 @media screen and (max-width: 780px) {
