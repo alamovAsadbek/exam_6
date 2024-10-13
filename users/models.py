@@ -38,7 +38,6 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=100, verbose_name=_('Email'), unique=True)
     is_active = models.BooleanField(default=False, verbose_name=_('Status'))
     username = models.CharField(max_length=100, verbose_name=_('Username'), unique=True)
-    password = models.CharField(max_length=100, verbose_name=_('Password'))
     image = models.ImageField(upload_to='team_avatars/', verbose_name=_('Profile Image'), null=True, blank=True,
                               default='https://i.pinimg.com/736x/6a/d8/6f/6ad86fe68e2f55f29a0bf1a92d26a221.jpg',
                               validators=[validate_image_size])
