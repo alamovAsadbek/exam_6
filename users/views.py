@@ -80,6 +80,7 @@ def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
+            print(form.cleaned_data)
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
