@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class UserModel(AbstractBaseUser):
+class UserModel(models.Model):
     full_name = models.CharField(max_length=100, verbose_name=_('Full Name'))
     linkedin_url = models.URLField(max_length=200, verbose_name=_('LinkedIn URL'), null=True, blank=True)
     email = models.EmailField(max_length=100, verbose_name=_('Email'), unique=True)
