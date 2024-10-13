@@ -84,7 +84,7 @@ def login_view(request):
                 return redirect("feedbacks")
             else:
                 errors = form.errors
-                context = {"form": form, "errors": errors}
+                context = {"form": form}
                 return render(request, template_name='auth/login/login.html', context=context)
     return render(request, 'auth/login/login.html')
 

@@ -25,9 +25,9 @@
 
 <body>
 {#modal#}
-{% if error %}
+{% if form.errors != None %}
     <div class="alert alert-danger" role="alert" style="font-size: 14px;">
-        {{ error.as_text }}
+        {{ errors }}
     </div>
 {% endif %}
 <!--  Body Wrapper -->
