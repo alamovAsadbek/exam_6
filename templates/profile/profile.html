@@ -43,7 +43,11 @@
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
-                    <button class="btn" type="button">Upload new image</button>
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Change profile picture</label>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple accept="image/*"
+                               style="cursor: pointer; width: 80%; margin: auto;">
+                    </div>
                 </div>
             </div>
         </div>
