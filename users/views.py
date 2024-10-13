@@ -33,7 +33,7 @@ def send_email_verification(request, user):
     token = email_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     current_site = get_current_site(request)
-    verification_url = reverse('verify_email', kwargs={'uidb64': uid, 'token': token})
+    verification_url = reverse('verify-email', kwargs={'uidb64': uid, 'token': token})
     full_url = f"http://{current_site.domain}/{verification_url}"
 
     text_content = render_to_string(
@@ -58,17 +58,15 @@ def register_view(request):
     if request.method == 'POST':
         print(request.POST)
         form = UserRegisterForm(request.POST)
-        print(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
             user.is_active = False
             user.save()
             send_email_verification(request, user)
             return redirect(
                 reverse_lazy('login'))
         else:
-            errors = form.errors.as_json()
+            errors = form.errors
             return render(request, 'auth/register/register.html',
                           {"form": form, "errors": errors})
     else:
