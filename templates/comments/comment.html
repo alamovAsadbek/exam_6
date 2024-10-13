@@ -75,7 +75,8 @@
                             {% else %}
                                 <img class="chat-area-profile"
                                      src="{{ comment.user.image.url }}"
-                                     alt="{{ comment.user.username }}"/>
+                                     alt="{{ comment.user.username }}" data-toggle="tooltip" data-placement="top"
+                                     title="{{ comment.user.username }}"/>
                             {% endif %}
 
                         {% endfor %}
