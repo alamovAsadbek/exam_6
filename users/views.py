@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
@@ -79,18 +78,17 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(request=request, username=username, password=password)
+            user = UserModel.objects.filter(username=username, password=password).first()
+            print(user)
             if user is not None:
-                login(request, user)
+                request.session['user_id'] = user.id
                 return redirect('feedbacks')
             else:
                 error_message = "Username yoki parol noto'g'ri"
         else:
             error_message = "Formada xato mavjud"
-    else:
-        form = UserLoginForm()
 
-    return render(request, 'auth/login/login.html', {'form': form, 'error': error_message})
+    return render(request, 'auth/login/login.html', {'error': error_message})
 
 
 def profileView(request):
