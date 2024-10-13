@@ -88,8 +88,8 @@
                                              src="{{ comment.user.image.url }}"
                                              alt="{{ comment.user.username }}"/>
                                     {% endif %}
-                                    <div class="chat-msg-date">Writer: {{ comment.user.username }}, Message
-                                        written {{ comment.created_at|date:"d M Y" }}</div>
+                                    <div class="chat-msg-date">Message
+                                        written {{ comment.created_at|timezone:"Asia/Tashkent"|date:"d M Y h:i A" }} </div>
                                 </div>
                                 <div class="chat-msg-content">
                                     <div class="chat-msg-text">
