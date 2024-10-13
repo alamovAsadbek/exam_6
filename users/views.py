@@ -98,7 +98,7 @@ def login_view(request):
 
 
 def profile_view(request):
-    pass
+    return render(request, 'profile/profile.html')
 
 
 def error_404_view(request):
