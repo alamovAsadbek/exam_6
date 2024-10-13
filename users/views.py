@@ -79,10 +79,8 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = UserModel.objects.filter(username=username, password=password).first()
-            print(user)
+            user = authenticate(request=request, username=username, password=password)
             if user is not None:
-                user = authenticate(request=request, username=username, password=password)
                 login(request, user)
                 return redirect('feedbacks')
             else:
