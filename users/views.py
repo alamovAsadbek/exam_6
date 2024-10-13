@@ -8,10 +8,6 @@ from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from users.forms import UserRegisterForm, UserLoginForm
-from users.models import UserModel
-from users.token import email_token_generator
-
 
 def logoutView(request):
     logout(request)
@@ -20,24 +16,26 @@ def logoutView(request):
 
 def verify_email(request, uidb64, token):
     uid = force_str(urlsafe_base64_decode(uidb64))
-    user = UserModel.objects.get(pk=uid)
-    if user is not None and email_token_generator.check_token(user, token):
+    user = User.objects.get(pk=uid)
+    if user is not None and email_verification_token.check_token(user, token):
         user.is_active = True
         user.save()
-        return redirect(reverse_lazy('login'))
+        messages.success(request, 'Account activated')
+        return redirect(reverse_lazy('users:login'))
     else:
-        return redirect(reverse_lazy('login'))
+        messages.error(request, 'The verification link is invalid.')
+        return redirect(reverse_lazy('users:login'))
 
 
 def send_email_verification(request, user):
-    token = email_token_generator.make_token(user)
+    token = email_verification_token.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     current_site = get_current_site(request)
-    verification_url = reverse('verify_email', kwargs={'uidb64': uid, 'token': token})
+    verification_url = reverse('users:verify_email', kwargs={'uidb64': uid, 'token': token})
     full_url = f"http://{current_site.domain}/{verification_url}"
 
     text_content = render_to_string(
-        'components/verify_email/verify_email.html',
+        'main/auth/register/verify-email.html',
         {
             'user': user,
             'full_url': full_url,
@@ -56,7 +54,7 @@ def send_email_verification(request, user):
 
 def register_view(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = RegistrationForm(request.POST)
         print(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
@@ -67,13 +65,13 @@ def register_view(request):
             return redirect(reverse_lazy('users:login'))
         else:
             errors = form.errors
-            return render(request, 'auth/register/register.html', {"errors": errors})
-    return render(request, template_name='auth/register/register.html')
+            return render(request, 'main/auth/register/register.html', {"errors": errors})
+    return render(request, template_name='main/auth/register/register.html')
 
 
 def login_view(request):
     if request.method == 'POST':
-        form = UserLoginForm(request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -81,11 +79,12 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 print(request.user)
-                return redirect("feedbacks")
+                return redirect("/")
             else:
-                return render(request, template_name='auth/login/login.html')
+                messages.error(request, 'Invalid username or password')
+                return render(request, template_name='main/auth/login/login.html')
     else:
-        return render(request, 'auth/login/login.html')
+        return render(request, 'main/auth/login/login.html')
 
 
 def profileView(request):
