@@ -85,9 +85,15 @@
                         {% if comment.user == request.user %}
                             <div class="chat-msg owner">
                                 <div class="chat-msg-profile">
-                                    <img class="chat-msg-img"
-                                         src="{{ comment.user.image.url }}"
-                                         alt="{{ comment.user.username }}"/>
+                                    {% if request.user.image.url == None or request.user.image.url == '' %}
+                                        <img class="chat-msg-img"
+                                             src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1369675164.1728777600&semt=ais_hybrid"
+                                             alt="{{ comment.user.username }}"/>
+                                    {% else %}
+                                        <img class="chat-msg-img"
+                                             src="{{ comment.user.image.url }}"
+                                             alt="{{ comment.user.username }}"/>
+                                    {% endif %}
                                     <div class="chat-msg-date">Message
                                         written {{ comment.created_at|date:"d M Y" }}</div>
                                 </div>
@@ -98,9 +104,15 @@
                         {% else %}
                             <div class="chat-msg">
                                 <div class="chat-msg-profile">
-                                    <img class="chat-msg-img"
-                                         src="{{ comment.user.image.url }}"
-                                         alt=""/>
+                                    {% if request.user.image.url == None or request.user.image.url == '' %}
+                                        <img class="chat-msg-img"
+                                             src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1369675164.1728777600&semt=ais_hybrid"
+                                             alt="{{ comment.user.username }}"/>
+                                    {% else %}
+                                        <img class="chat-msg-img"
+                                             src="{{ comment.user.image.url }}"
+                                             alt="{{ comment.user.username }}"/>
+                                    {% endif %}
                                     <div class="chat-msg-date">Message
                                         written {{ comment.created_at|date:"d M Y" }}</div>
                                 </div>
