@@ -10,5 +10,9 @@ class UserRegisterForm(forms.ModelForm):
 
 
 class UserLoginForm(forms.Form):
-    username = forms.EmailField(max_length=255, label='Username')
-    password = forms.CharField(max_length=255, label='Password')
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = UserModel
+        fields = ['username', 'password']
