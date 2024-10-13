@@ -11,3 +11,12 @@ class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'username', 'password']
+
+
+class EditProfileForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=100, required=False)
+    last_name = forms.CharField(max_length=100, required=False)
+    image = forms.ImageField(required=False)
+    organization_name = forms.CharField(max_length=100, required=False)
+    location = forms.CharField(max_length=100, required=False)
+    linkedin_url = forms.URLField(required=False)
