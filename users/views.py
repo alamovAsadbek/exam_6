@@ -129,10 +129,10 @@ def update_profile_view(request, pk):
                 linkedin_url = user.profile.linkedin_url
             if avatar is None:
                 avatar = user.profile.avatar.url
-            user.profile.avatar = avatar
             user.first_name = first_name
             user.last_name = last_name
             user.save()
+            user.profile.avatar = avatar
             user.profile.location = location
             user.profile.organization_name = organization
             user.profile.linkedin_url = linkedin_url
