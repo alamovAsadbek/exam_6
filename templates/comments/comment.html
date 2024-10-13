@@ -23,14 +23,6 @@
 
     <!--    js file import-->
     <script src="{% static 'js/comments/comment-manage.js' %}" defer></script>
-    <script>
-        window.onload = function () {
-            const feedback = '{{ feedback }}';
-            if (feedback === 'None' || feedback === '') {
-                window.location.href = "{% url 'error404' %}";
-            }
-        }
-    </script>
 </head>
 <body>
 <div class="app">
@@ -218,6 +210,12 @@
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
+    window.onload = function () {
+        const feedback = '{{ feedback }}';
+        if (feedback === 'None' || feedback === '') {
+            window.location.href = "{% url 'error404' %}";
+        }
+    }
 </script>
 </body>
 </html>
