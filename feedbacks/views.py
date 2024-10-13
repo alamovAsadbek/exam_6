@@ -36,7 +36,6 @@ def commentsView(request):
 @login_required
 def offerFormView(request):
     if request.method == 'POST':
-        print(request.POST)
         keys = request.POST.keys()
         second_key = list(keys)[4]
         form = FeedbackOfferForm(request.POST)
