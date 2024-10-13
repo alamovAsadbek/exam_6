@@ -16,8 +16,7 @@ class ProfileModel(models.Model):
     organization_name = models.CharField(verbose_name=_("Organization Name"), max_length=64, null=True, blank=True)
     location = models.CharField(verbose_name=_("Location"), max_length=64, null=True, blank=True)
     linkedin_link = models.CharField(verbose_name=_("Linkedin"), max_length=64, null=True, blank=True)
-    avatar = models.ImageField(verbose_name=_("Avatar"), upload_to="users/",
-                               default='https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1369675164.1728777600&semt=ais_hybrid')
+    avatar = models.ImageField(verbose_name=_("Avatar"), upload_to="users/", default='files/default_avatar.jpeg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
