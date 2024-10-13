@@ -2,10 +2,16 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from users.forms import validate_image_size
+
+# validation image for user registration form
+def validate_image_size(image):
+    max_size = 5 * 1024 * 1024
+    if image.size > max_size:
+        raise ValidationError("The maximum file size that can be uploaded is 5MB.")
 
 
 class UserModel(models.Model):
