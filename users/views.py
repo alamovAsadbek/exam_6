@@ -101,6 +101,8 @@ def profile_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
     user = request.user
+    user = User.objects.get(pk=user.pk)
+    print(user.profile.avatar)
     return render(request, 'profile/profile.html', {'user': user})
 
 

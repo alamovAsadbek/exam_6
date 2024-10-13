@@ -39,14 +39,14 @@
                     <div class="card-header">Profile Picture</div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        {% if user.avatar.url == None or user.avatar.url == '' %}
+                        {% if user.profile.avatar.url == None or user.profile.avatar.url == '' %}
                             <img class="img-account-profile rounded-circle mb-2"
                                  src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1369675164.1728777600&semt=ais_hybrid"
-                                 alt="">
+                                 alt="{{ user.profile.avatar.url }}">
                         {% else %}
                             <img class="img-account-profile rounded-circle mb-2"
-                                 src="{{ user.avatar.url }}"
-                                 alt="{{ user.username }}">
+                                 src="{{ user.profile.avatar.url }}"
+                                 alt="{{ user.profile.avatar.url }}">
                         {% endif %}
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
