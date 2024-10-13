@@ -17,6 +17,6 @@ class UserLoginForm(forms.Form):
 
 # validation image for user registration form
 def validate_image_size(image):
-    max_size = 5 * 1024 * 1024  # 5MB in bytes
+    max_size = 5 * 1024 * 1024
     if image.size > max_size:
         raise ValidationError("The maximum file size that can be uploaded is 5MB.")
