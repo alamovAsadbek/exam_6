@@ -13,7 +13,8 @@ def feedbacksView(request):
     offers = FeedbackModel.objects.all().filter(feedback_type='offer').exclude(user=request.user).order_by(
         '-created_at')
     my_offers = FeedbackModel.objects.all().filter(feedback_type='offer', user=request.user)
-    my_written_feedbacks = CommentModel.objects.all().filter(user=request.user).order_by('-created_at')
+    my_written_feedbacks = CommentModel.objects.all().filter(user=request.user).select_related('feedback').order_by(
+        '-created_at')
     print(my_written_feedbacks)
     context = {
         'problems': problems,
