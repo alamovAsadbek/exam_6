@@ -16,7 +16,7 @@ class RegisterForm(forms.ModelForm):
 class EditProfileForm(forms.Form):
     first_name = forms.CharField(max_length=100, required=False)
     last_name = forms.CharField(max_length=100, required=False)
-    image = forms.ImageField(required=False)
+    avatar = forms.ImageField(required=False)
     organization_name = forms.CharField(max_length=100, required=False)
     location = forms.CharField(max_length=100, required=False)
     linkedin_url = forms.URLField(required=False)
