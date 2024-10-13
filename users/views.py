@@ -80,7 +80,6 @@ def login_view(request):
             password = form.cleaned_data['password']
             user = UserModel.objects.filter(username=username, password=password).first()
             if user is not None:
-                print(user.id)
                 request.COOKIES['user_id'] = user.id
                 request.session['user_id'] = user.id
                 print(request.session.get('user_id'))
