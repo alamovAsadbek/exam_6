@@ -66,9 +66,14 @@
                     <div class="chat-area-title">{% trans 'Who wrote a comment' %}</div>
                     <div class="chat-area-group">
                         {% for comment in comments %}
-                            <img class="chat-area-profile"
-                                 src="{{ comment.user.image.url }}"
-                                 alt=""/>
+                            {% if forloop.counter <= 3 %}
+                                <img class="chat-area-profile"
+                                     src="{{ comment.user.image.url }}"
+                                     alt=""/>
+                            {% else %}
+                                <span>+{{ comments|length|add:'-3' }}</span>
+                                {% break %}
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
