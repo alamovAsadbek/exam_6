@@ -13,6 +13,7 @@ def createCommentView(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.user = request.user
+            comment.feedback = FeedbackModel.objects.get(pk=pk)
             comment.save()
             return redirect('feedback_detail', pk=pk)
     else:
