@@ -19,7 +19,7 @@ class UserModel(models.Model):
     last_name = models.CharField(max_length=100, verbose_name=_('Last Name'))
     linkedin_url = models.URLField(max_length=200, verbose_name=_('LinkedIn URL'), null=True, blank=True)
     email = models.EmailField(max_length=100, verbose_name=_('Email'), unique=True)
-    is_active = models.BooleanField(default=False, verbose_name=_('Status'))
+    password = models.CharField(max_length=100, verbose_name=_('Password'))
     username = models.CharField(max_length=100, verbose_name=_('Username'), unique=True)
 
     def __str__(self):
