@@ -1,14 +1,13 @@
 from django.conf import settings
-from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth import logout
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
-from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from users.forms import UserLoginForm, UserRegisterForm
+from users.forms import UserRegisterForm
 from users.models import UserModel
 from users.token import email_token_generator
 
@@ -71,22 +70,34 @@ def register_view(request):
     return render(request, 'auth/register/register.html', {"form": form})
 
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
+
+
 def login_view(request):
+    global error_message
     if request.method == 'POST':
-        form = UserLoginForm(request.POST)
+        form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+
             user = authenticate(request=request, username=username, password=password)
+
             if user is not None:
                 login(request, user)
-                print(request.user)
-                return redirect("feedbacks")
+                return redirect('home')
             else:
-                errors = form.errors
-                context = {"form": form}
-                return render(request, template_name='auth/login/login.html', context=context)
-    return render(request, 'auth/login/login.html')
+                error_message = "Username yoki parol noto'g'ri"
+        else:
+            error_message = "Formada xato mavjud"
+
+    else:
+        form = AuthenticationForm()  # Bo'sh login formasi
+
+    return render(request, 'auth/login/login.html',
+                  {'form': form, 'error': error_message if 'error_message' in locals() else ''})
 
 
 def profileView(request):
