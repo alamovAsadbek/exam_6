@@ -34,6 +34,7 @@ def commentsView(request):
 
 def offerFormView(request):
     if request.method == 'POST':
+        print(request.POST)
         keys = request.POST.keys()
         second_key = list(keys)[4]
         form = FeedbackOfferForm(request.POST)
@@ -44,7 +45,7 @@ def offerFormView(request):
                 form.cleaned_data['feedback_type'] = 'problem'
             print(form.cleaned_data)
             form.save()
-            return redirect(reverse_lazy('home'))
+            return redirect(reverse_lazy('feedbacks'))
         else:
             errors = form.errors
             return render(request, 'offers/offer.html', {'errors': errors})
