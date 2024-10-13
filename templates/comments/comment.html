@@ -96,8 +96,8 @@
                                              src="{{ comment.user.image.url }}"
                                              alt="{{ comment.user.username }}"/>
                                     {% endif %}
-                                    <div class="chat-msg-date">Message
-                                        written {{ comment.created_at|date:"d M Y" }}, {{ comment.user.username }}</div>
+                                    <div class="chat-msg-date">Writer: {{ comment.user.username }}, Message
+                                        written {{ comment.created_at|date:"d M Y" }} </div>
                                 </div>
                                 <div class="chat-msg-content">
                                     <div class="chat-msg-text">{{ comment.text }}</div>
@@ -115,8 +115,8 @@
                                              src="{{ comment.user.image.url }}"
                                              alt="{{ comment.user.username }}"/>
                                     {% endif %}
-                                    <div class="chat-msg-date">Message
-                                        written {{ comment.created_at|date:"d M Y" }}, {{ comment.user.username }}</div>
+                                    <div class="chat-msg-date">Writer: {{ comment.user.username }}, Message
+                                        written {{ comment.created_at|date:"d M Y" }}</div>
                                 </div>
                                 <div class="chat-msg-content">
                                     <div class="chat-msg-text">
