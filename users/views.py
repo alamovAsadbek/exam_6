@@ -84,7 +84,7 @@ def login_view(request):
             if user is not None:
                 user = authenticate(request=request, username=username, password=password)
                 login(request, user)
-                return redirect('home')
+                return redirect('feedbacks')
             else:
                 error_message = "Username yoki parol noto'g'ri"
         else:
