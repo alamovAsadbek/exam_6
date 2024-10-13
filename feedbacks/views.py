@@ -28,6 +28,7 @@ def landingPageView(request):
         'all_frequently_asked_questions': all_frequently_asked_questions,
         'team_members': team_members,
         'best_offers': FeedbackModel.objects.all().filter(feedback_type='offer').order_by('-see')[:6],
+        'range_number': range(2),
     }
     return render(request, 'index/index.html', context)
 
