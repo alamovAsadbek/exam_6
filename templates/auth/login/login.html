@@ -27,7 +27,7 @@
 {#modal#}
 {% if error %}
     <div class="alert alert-danger" role="alert" style="font-size: 14px;">
-        {{ error }}
+        {{ error.as_text }}
     </div>
 {% endif %}
 <!--  Body Wrapper -->
