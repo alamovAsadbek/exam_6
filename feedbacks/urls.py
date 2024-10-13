@@ -1,7 +1,6 @@
 from django.urls import path
 
 from comments.views import createCommentView
-from likes.views import LikeView, UnlikeView
 from users.views import login_view, logoutView, register_view, profileView, error404View, verify_email
 from .views import *
 
@@ -17,8 +16,4 @@ urlpatterns = [
     path('verify-email/<uidb64>/<token>/', verify_email, name='verify-email'),
     path('profile', profileView, name='profile'),
     path('404', error404View, name='error404'),
-
-    # for likes
-    path('api/like/', LikeView.as_view(), name='like'),
-    path('api/unlike/', UnlikeView.as_view(), name='unlike'),
 ]
