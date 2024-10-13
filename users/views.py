@@ -56,15 +56,12 @@ def send_email_verification(request, user):
 
 def register_view(request):
     if request.method == 'POST':
-        print(request.POST)
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
             user.save()
-            send_email_verification(request, user)
-            return redirect(
-                reverse_lazy('login'))
+            return redirect('login')
         else:
             errors = form.errors
             return render(request, 'auth/register/register.html',
