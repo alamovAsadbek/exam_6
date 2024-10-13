@@ -107,7 +107,7 @@ def profile_view(request):
 def update_profile_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    user = request.user
+    user = ProfileModel.objects.get(pk=request.user.pk)
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=user)
         if form.is_valid():
