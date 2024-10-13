@@ -67,11 +67,11 @@
                     <div class="chat-area-title">{% trans 'Who wrote a comment' %}</div>
                     <div class="chat-area-group">
                         {% for comment in comments %}
-                            {% if comment.user != request.user and comment.user.image.url != None and comment.user.image.url != '' %}
+                            {% if comment.user.image.url == None or comment.user.image.url == '' %}
                                 <img class="chat-area-profile"
                                      src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1369675164.1728777600&semt=ais_hybrid"
                                      alt="{{ comment.user.username }}"/>
-                            {% elif comment.user != request.user %}
+                            {% else %}
                                 <img class="chat-area-profile"
                                      src="{{ comment.user.image.url }}"
                                      alt="{{ comment.user.username }}"/>
