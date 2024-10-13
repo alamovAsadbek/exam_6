@@ -13,7 +13,7 @@ class RegisterForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email', 'username', 'password']
 
 
-class EditProfileForm(forms.ModelForm):
+class EditProfileForm(forms.Form):
     first_name = forms.CharField(max_length=100, required=False)
     last_name = forms.CharField(max_length=100, required=False)
     image = forms.ImageField(required=False)
