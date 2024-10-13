@@ -35,7 +35,6 @@
                 <option value="offers">Show Offers</option>
                 <option value="demands">Show Problem Demands</option>
                 <option value="my-offers">Show My Offers</option>
-                <option value="my-written-offers">Show My Written Offers</option>
             </select>
         </div>
         <div class="input-group ml-5">
@@ -178,42 +177,6 @@
         {% else %}
             <div class="col-md-12 my-offers mt-4 mb-4" style="display: none;">
                 <h4>No Offers found</h4>
-            </div>
-        {% endif %}
-
-        <!--    My Written Offers       -->
-        {% if my_written_offers|length > 0 %}
-            {% for offer in my_written_offers %}
-                <div class="col-md-4 my-written-offers mb-4" style="display: none; margin-top: 25px">
-                    <div class="card">
-                        <div class="img-avatar">
-                            <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
-                        </div>
-                        <div class="card-text">
-                            <div class="title-total">
-                                <div class="title">Ant Collector</div>
-                                <a href="{% url 'feedback_detail' offer.pk %}">My Written Offer</a>
-
-                                <div class="desc">Morgan has collected ants since they were six years old and now has
-                                    many dozen
-                                    ants but none in their pants.
-                                </div>
-                                <div class="actions">
-                                    <i class="bi bi-heart">15</i>
-                                    <i class="bi bi-eye">25</i>
-                                    <i class="bi bi-chat">5</i>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <div class="col-md-12 my-written-offers mt-4 mb-4">
-                <h4>No Written Offers found</h4>
             </div>
         {% endif %}
 
