@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 
 from frequently_questions.models import FrequentlyQuestionsModel
 from team_users.models import TeamUserModel
-from .forms import FeedbackOfferForm, FeedbackProblemForm
+from .forms import FeedbackRequestForm
 from .models import FeedbackModel
 
 
@@ -34,26 +34,17 @@ def commentsView(request):
 
 def offerFormView(request):
     if request.method == 'POST':
-        form = FeedbackOfferForm(request.POST)
-        print(form)
+        form = FeedbackRequestForm(request.POST)
+        print(request.POST)
         if form.is_valid():
             keys = request.POST.keys()
             second_key = list(keys)[4]
-            form = FeedbackOfferForm(request.POST)
-            user = request.user
-            if second_key == 'problemForm':
-                form = FeedbackProblemForm(request.POST)
-            else:
-                form.cleaned_data['user'] = user
-            if form.is_valid():
-                if second_key == 'problemForm':
-                    form.cleaned_data['feedback_type'] = 'problem'
-                print(form.cleaned_data)
-                form.save()
-                return redirect(reverse_lazy('feedbacks'))
-            else:
-                errors = form.errors
-                return render(request, 'offers/offer.html', {'errors': errors})
+            feedback = form.save(commit=False)
+            if second_key == 'offerForm':
+                feedback.user = request.user
+            form.save()
+            return redirect(reverse_lazy('feedbacks'))
         else:
-            return redirect('error404')
+            errors = form.errors
+            return render(request, 'offers/offer.html', {'errors': errors})
     return render(request, 'forms/offer/offer-form.html')
