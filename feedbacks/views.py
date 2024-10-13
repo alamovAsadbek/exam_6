@@ -29,6 +29,7 @@ def landingPageView(request):
         'team_members': team_members,
         'best_offers': FeedbackModel.objects.all().filter(feedback_type='offer').order_by('-see')[:3]
     }
+    print(context)
     return render(request, 'index/index.html', context)
 
 
