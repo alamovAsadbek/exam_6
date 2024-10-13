@@ -1,10 +1,7 @@
-from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from comments.models import CommentModel
 from frequently_questions.models import FrequentlyQuestionsModel
-from likes.models import LikeModel
 from team_users.models import TeamUserModel
 from .forms import FeedbackOfferForm, FeedbackProblemForm
 from .models import FeedbackModel
@@ -13,12 +10,9 @@ from .models import FeedbackModel
 def feedbacksView(request):
     problems = FeedbackModel.objects.all().filter(feedback_type='problem')
     offers = FeedbackModel.objects.all().filter(feedback_type='offer').order_by('-created_at')
-    likes = LikeModel.objects.values('post_id').annotate(likes_count=Count('id'))
-    print(likes)
     context = {
         'problems': problems,
         'offers': offers,
-        'likes': likes
     }
     return render(request, 'offers/offer.html', context)
 
@@ -56,6 +50,3 @@ def offerFormView(request):
             return render(request, 'offers/offer.html', {'errors': errors})
     else:
         return render(request, 'forms/offer/offer-form.html')
-
-
-
