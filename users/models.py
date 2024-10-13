@@ -49,7 +49,7 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
         blank=True
     )
 
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'full_name']
 
     objects = UserModelManager()
