@@ -76,11 +76,10 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 def login_view(request):
-    global error_message
+    error_message = None
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
@@ -95,10 +94,9 @@ def login_view(request):
             error_message = "Formada xato mavjud"
 
     else:
-        form = AuthenticationForm()
+        form = AuthenticationForm()  # Bo'sh forma
 
-    return render(request, 'auth/login/login.html',
-                  {'form': form, 'error': error_message if 'error_message' in locals() else ''})
+    return render(request, 'auth/login/login.html', {'form': form, 'error': error_message})
 
 
 def profileView(request):
