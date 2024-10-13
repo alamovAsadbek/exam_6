@@ -5,7 +5,8 @@ from users.models import UserModel
 
 
 class UserRegisterForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput, min_length=8, label='Password')
+    password = forms.CharField(validators='Password must be at least 8 characters long', widget=forms.PasswordInput,
+                               min_length=8, label='Password')
 
     class Meta:
         model = UserModel
