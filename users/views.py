@@ -94,7 +94,7 @@ def login_view(request):
             error_message = "Formada xato mavjud"
 
     else:
-        form = AuthenticationForm()  # Bo'sh login formasi
+        form = AuthenticationForm()
 
     return render(request, 'auth/login/login.html',
                   {'form': form, 'error': error_message if 'error_message' in locals() else ''})
