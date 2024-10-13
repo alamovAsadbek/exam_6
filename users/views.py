@@ -79,9 +79,11 @@ def login_view(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = UserModel.objects.filter(username=username, password=password).first()
-            print(user)
             if user is not None:
+                print(user.id)
+                request.COOKIES['user_id'] = user.id
                 request.session['user_id'] = user.id
+                print(request.session.get('user_id'))
                 return redirect('feedbacks')
             else:
                 error_message = "Username yoki parol noto'g'ri"
