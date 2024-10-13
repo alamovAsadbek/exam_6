@@ -70,7 +70,8 @@
                             {% if comment.user.image.url == None or comment.user.image.url == '' %}
                                 <img class="chat-area-profile"
                                      src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1369675164.1728777600&semt=ais_hybrid"
-                                     alt="{{ comment.user.username }}"/>
+                                     alt="{{ comment.user.username }}" data-toggle="tooltip" data-placement="top"
+                                     title="{{ comment.user.username }}"/>
                             {% else %}
                                 <img class="chat-area-profile"
                                      src="{{ comment.user.image.url }}"
