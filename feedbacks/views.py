@@ -36,21 +36,25 @@ def commentsView(request):
 @login_required
 def offerFormView(request):
     if request.method == 'POST':
-        keys = request.POST.keys()
-        second_key = list(keys)[4]
         form = FeedbackOfferForm(request.POST)
-        user = request.user
-        form.cleaned_data['user'] = user
-        if second_key == 'problemForm':
-            form = FeedbackProblemForm(request.POST)
         if form.is_valid():
+            keys = request.POST.keys()
+            second_key = list(keys)[4]
+            form = FeedbackOfferForm(request.POST)
+            user = request.user
+            form.cleaned_data['user'] = user
             if second_key == 'problemForm':
-                form.cleaned_data['feedback_type'] = 'problem'
-            print(form.cleaned_data)
-            form.save()
-            return redirect(reverse_lazy('feedbacks'))
+                form = FeedbackProblemForm(request.POST)
+            if form.is_valid():
+                if second_key == 'problemForm':
+                    form.cleaned_data['feedback_type'] = 'problem'
+                print(form.cleaned_data)
+                form.save()
+                return redirect(reverse_lazy('feedbacks'))
+            else:
+                errors = form.errors
+                return render(request, 'offers/offer.html', {'errors': errors})
         else:
-            errors = form.errors
-            return render(request, 'offers/offer.html', {'errors': errors})
+            return redirect('error404')
     else:
         return render(request, 'forms/offer/offer-form.html')
