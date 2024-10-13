@@ -12,7 +12,3 @@ class UserRegisterForm(forms.ModelForm):
 class UserLoginForm(forms.Form):
     username = forms.CharField(max_length=100)
     password = forms.CharField(widget=forms.PasswordInput)
-
-    class Meta:
-        model = UserModel
-        fields = ['username', 'password']
