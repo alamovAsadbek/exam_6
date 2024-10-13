@@ -1,8 +1,9 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
 class LikeModel(models.Model):
-    user = models.ForeignKey('users.UserModel', on_delete=models.CASCADE, null=True, blank=True, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='likes')
     post = models.ForeignKey('feedbacks.FeedbackModel', on_delete=models.CASCADE, null=True, blank=True,
                              related_name='post_likes')
     status = models.BooleanField(default=True)

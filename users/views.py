@@ -1,5 +1,6 @@
 from django.conf import settings
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
@@ -8,19 +9,19 @@ from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from users.forms import UserRegisterForm, UserLoginForm
-from users.models import UserModel
+from users.forms import RegisterForm, LoginForm
+from users.models import ProfileModel
 from users.token import email_token_generator
 
 
-def logoutView(request):
+def logout_view(request):
     logout(request)
     return render(request, 'index/index.html')
 
 
 def verify_email(request, uidb64, token):
     uid = force_str(urlsafe_base64_decode(uidb64))
-    user = UserModel.objects.get(pk=uid)
+    user = User.objects.get(pk=uid)
     if user is not None and email_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
@@ -34,7 +35,7 @@ def send_email_verification(request, user):
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     current_site = get_current_site(request)
     verification_url = reverse('verify-email', kwargs={'uidb64': uid, 'token': token})
-    full_url = f"http://{current_site.domain}/{verification_url}"
+    full_url = f"http://{current_site.domain}{verification_url}"
 
     text_content = render_to_string(
         'components/verify_email/verify_email.html',
@@ -56,34 +57,38 @@ def send_email_verification(request, user):
 
 def register_view(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
             user.is_active = False
             user.save()
+            ProfileModel.objects.create(
+                user_id=user.pk,
+            )
+            send_email_verification(request, user)
             return redirect('login')
         else:
             errors = form.errors
             return render(request, 'auth/register/register.html',
                           {"form": form, "errors": errors})
     else:
-        form = UserRegisterForm()
+        form = RegisterForm()
     return render(request, 'auth/register/register.html', {"form": form})
 
 
 def login_view(request):
     error_message = None
     if request.method == 'POST':
-        form = UserLoginForm(request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = UserModel.objects.filter(username=username, password=password).first()
+            user = authenticate(username=username, password=password)
             if user is not None:
-                request.COOKIES['user_id'] = user.id
-                request.session['user_id'] = user.id
-                print(request.session.get('user_id'))
-                return redirect('feedbacks')
+                if user.is_active:
+                    login(request, user)
+                    return redirect('feedbacks')
             else:
                 error_message = "Username yoki parol noto'g'ri"
         else:
@@ -92,9 +97,9 @@ def login_view(request):
     return render(request, 'auth/login/login.html', {'error': error_message})
 
 
-def profileView(request):
+def profile_view(request):
     pass
 
 
-def error404View(request):
+def error_404_view(request):
     return render(request, '404/404.html')

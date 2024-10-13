@@ -1,9 +1,6 @@
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
 
@@ -14,17 +11,18 @@ def validate_image_size(image):
         raise ValidationError("The maximum file size that can be uploaded is 5MB.")
 
 
-class UserModel(models.Model):
-    first_name = models.CharField(max_length=100, verbose_name=_('First Name'))
-    last_name = models.CharField(max_length=100, verbose_name=_('Last Name'))
-    linkedin_url = models.URLField(max_length=200, verbose_name=_('LinkedIn URL'), null=True, blank=True)
-    email = models.EmailField(max_length=100, verbose_name=_('Email'), unique=True)
-    password = models.CharField(max_length=100, verbose_name=_('Password'))
-    username = models.CharField(max_length=100, verbose_name=_('Username'), unique=True)
+class ProfileModel(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_("Profile"), related_name='profile')
+    organization_name = models.CharField(verbose_name=_("Organization Name"), max_length=64, null=True, blank=True)
+    location = models.CharField(verbose_name=_("Location"), max_length=64, null=True, blank=True)
+    linkedin_link = models.CharField(verbose_name=_("Linkedin"), max_length=64, null=True, blank=True)
+    avatar = models.ImageField(verbose_name=_("Avatar"), upload_to="users/", default='default.jpg')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return self.user.email
 
     class Meta:
-        verbose_name = _('User')
-        verbose_name_plural = _('Users')
+        verbose_name = _("Profile")
+        verbose_name_plural = _("Profiles")

@@ -1,11 +1,9 @@
 from django.contrib import admin
-from modeltranslation.admin import TranslationAdmin
-
-from .models import UserModel
+from .models import ProfileModel
 
 
-@admin.register(UserModel)
-class UserModelAdmin(TranslationAdmin):
-    list_display = ('id', 'first_name', 'last_name', 'username',)
-    list_display_links = ('id', 'first_name', 'last_name', 'username',)
-    search_fields = ('first_name', 'last_name', 'username',)
+@admin.register(ProfileModel)
+class UserModelAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user__first_name', 'user__last_name', 'user__username',)
+    list_display_links = ('id', 'user__first_name', 'user__last_name', 'user__username',)
+    search_fields = ('user__first_name', 'user__last_name', 'user__username',)
