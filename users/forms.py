@@ -21,5 +21,5 @@ class UserRegisterForm(forms.ModelForm):
 
 
 class UserLoginForm(forms.Form):
-    email = forms.EmailField(max_length=255, label='Email')
+    username = forms.EmailField(max_length=255, label='Username')
     password = forms.CharField(max_length=255, label='Password')
