@@ -45,7 +45,8 @@
         </div>
         <div class="user-settings">
             {% if request.user.image.url == None or request.user.image.url == '' %}
-                <img class="user-profile" src="https://i.pinimg.com/736x/6a/d8/6f/6ad86fe68e2f55f29a0bf1a92d26a221.jpg"
+                <img class="user-profile"
+                     src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1369675164.1728777600&semt=ais_hybrid"
                      alt="404" class="account-profile" alt="404">
             {% else %}
                 <img src="{{ request.user.image.url }}"
