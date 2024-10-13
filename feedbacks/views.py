@@ -37,6 +37,7 @@ def commentsView(request):
 def offerFormView(request):
     if request.method == 'POST':
         form = FeedbackOfferForm(request.POST)
+        print(form)
         if form.is_valid():
             keys = request.POST.keys()
             second_key = list(keys)[4]
