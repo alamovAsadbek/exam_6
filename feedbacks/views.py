@@ -42,9 +42,10 @@ def offerFormView(request):
             second_key = list(keys)[4]
             form = FeedbackOfferForm(request.POST)
             user = request.user
-            form.cleaned_data['user'] = user
             if second_key == 'problemForm':
                 form = FeedbackProblemForm(request.POST)
+            else:
+                form.cleaned_data['user'] = user
             if form.is_valid():
                 if second_key == 'problemForm':
                     form.cleaned_data['feedback_type'] = 'problem'
