@@ -80,7 +80,6 @@ def login_view(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = UserModel.objects.filter(username=username, password=password).first()
-            print('user')
             print(user)
             if user is not None:
                 login(request, user)
